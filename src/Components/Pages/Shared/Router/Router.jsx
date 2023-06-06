@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home_Layout from "../../../Layout/Home_Layout/Home_Layout";
+import Home from "../../Home/Home/Home";
 
 
 const router = createBrowserRouter([
@@ -13,7 +14,10 @@ const router = createBrowserRouter([
     element: <Home_Layout></Home_Layout>,
     children:[
         {
+            path:"/",
+            element:<Home></Home>,
             
+
         }
     ]
   },
