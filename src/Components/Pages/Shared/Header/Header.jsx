@@ -9,7 +9,8 @@ const Header = () => {
    <Link to="/Instructor">Instructor</Link>
    <Link to="/Course_class">Classes</Link>
    <Link to="/">Dashboard</Link>
-
+<Link to="/resister">Resister</Link>
+<Link to="/login">Login</Link>
         </>
     )
     return (
