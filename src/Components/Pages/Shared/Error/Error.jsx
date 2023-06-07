@@ -6,7 +6,7 @@ const ErrorPage = () => {
   return (
     <div className="errorpags ">
     <section className='flex items-center justify-center p-5  text-black '>
-      <div className='container flex  items-center justify-center px-5 mx-auto py-80 '>
+      <div className='container flex  items-center justify-end px-5 mx-auto py-80 '>
 
         <div className=' text-center '>
          
