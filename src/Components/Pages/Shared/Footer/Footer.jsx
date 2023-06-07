@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
+        <div>
         <div style={{background:"#2d2d2d"}} className='p-5'>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-10 p-5'>
                 <div className='space-y-6'>
@@ -69,6 +70,23 @@ const Footer = () => {
                 </div>
             </div>
             
+        </div>
+        <div style={{background:"whitesmoke"}} className='md:flex justify-between p-5'>
+            <div>
+
+
+Home |  About | Blog |  Gallery |  Shop |  Contact 
+            </div>
+            <div>
+                
+
+  
+
+© 2016 - WHISTLE. Design: Tasnia Sharin
+
+            </div>
+
+        </div>
         </div>
     );
 };
