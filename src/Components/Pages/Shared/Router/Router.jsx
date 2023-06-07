@@ -10,12 +10,14 @@ import Course_Classes from "../../Home/Course_Classes/Course_Classes";
 import Instructor from "../../Home/Instructor/Instructor";
 import Resister from "../Resister/Resister";
 import Login from "../Login/Login";
+import ErrorPage from "../Error/Error";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home_Layout></Home_Layout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             path:"/",

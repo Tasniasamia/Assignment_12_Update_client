@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import pik from '../../../../assets/sports.svg'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+import GoogleSign from '../Google_Sign/Google_Sign';
+import { Link } from 'react-router-dom';
 const Resister = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
 
@@ -35,7 +38,7 @@ const{signup,data,displayname}=useContext(AuthContext)
             //     },
             //     body:JSON.stringify(userdata)
             //   }).then(res.json()).then(data=>{console.log(data);})
-              reset();
+           
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -43,7 +46,7 @@ const{signup,data,displayname}=useContext(AuthContext)
             showConfirmButton: false,
             timer: 1500
           })
-              
+          reset();  
               // ...
             }).catch((error) => {
               // An error occurred
@@ -121,7 +124,8 @@ const{signup,data,displayname}=useContext(AuthContext)
               <input type="submit"value="Resister" className="btn  btn-wide mx-auto w-full my-5"/>
             
             </form>
-            {/* <GoogleSign/> */}
+            <GoogleSign/>
+<div className='text-center py-5'> Already have  an  account? Please <Link to="/login"className='text-primary'>Login</Link></div>
           </div>
         </div>
             </div>

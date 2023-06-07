@@ -36,9 +36,10 @@ const GoogleSign = () => {
     return (
         <div>
             <div className="divider"></div>  
-            <div className='flex justify-center items-center text-4xl py-5'onClick={google}>
-<FcGoogle/>
-            </div>
+            <div className='flex justify-center'>
+            <div className='btn btn-wide mx-auto py-5'onClick={google}>
+<FcGoogle/> Continue With Google
+            </div></div>
         </div>
     );
 };
