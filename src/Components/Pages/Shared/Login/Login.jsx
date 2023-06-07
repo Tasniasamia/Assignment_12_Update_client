@@ -4,6 +4,7 @@ import pik from '../../../../assets/login.svg';
 const Login = () => {
     const[show,setShow]=useState(false);
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
+    const onSubmit = data => {console.log(data);}
     return (
         <div className='my-24'>
             
@@ -14,7 +15,7 @@ const Login = () => {
             </div>
           <div className="card w-full   shadow-2xl bg-base-100 md:w-1/3">
             <h1 className='text-4xl text-center font-bold py-5'>Login Now</h1>
-            <form className="card-body">
+            <form className="card-body"onSubmit={handleSubmit(onSubmit)}>
            
               <div className="form-control">
                 <label className="label">

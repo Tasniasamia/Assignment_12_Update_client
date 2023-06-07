@@ -1,21 +1,20 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged, updateProfile, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
-import app from '../../../../Firebase_config';
-import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import axios from 'axios';
+import app from '../../../../../Firebase/Firebase_config';
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
-// const [axiosSecure]=useAxiosSecure()
+
 
     console.log(data);
 
 
-    // const data="Tasnia";
+   
 
 
 
