@@ -11,6 +11,7 @@ import Instructor from "../../Home/Instructor/Instructor";
 import Resister from "../Resister/Resister";
 import Login from "../Login/Login";
 import ErrorPage from "../Error/Error";
+import Dashboard_Layout from "../../../Layout/Dashboard_Layout/Dashboard_Layout";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
   },{
     path:"login",
     element:<Login></Login>
+  },
+
+  {
+    path:"Dashboard",
+    element:<Dashboard_Layout></Dashboard_Layout>,
+    children:[
+      
+    ]
   }
 ]);
 

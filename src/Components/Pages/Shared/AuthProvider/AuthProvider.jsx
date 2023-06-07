@@ -60,18 +60,18 @@ const AuthProvider = ({ children }) => {
            
                 setData(currentUser);
                 console.log(currentUser);
-                if(currentUser){
-                    axios.post('http://localhost:6769/jwt', {email: currentUser.email})
-                    .then(data =>{
-                        // console.log(data.data.token)
-                        localStorage.setItem('accesstoken', data.data.token)
-                        setLoading(false);
-                    })
-                }
-                else{
-                    localStorage.removeItem("accesstoken");
-                    setLoading(false);
-                }
+                // if(currentUser){
+                //     axios.post('http://localhost:6769/jwt', {email: currentUser.email})
+                //     .then(data =>{
+                //         // console.log(data.data.token)
+                //         localStorage.setItem('accesstoken', data.data.token)
+                //         setLoading(false);
+                //     })
+                // }
+                // else{
+                //     localStorage.removeItem("accesstoken");
+                //     setLoading(false);
+                // }
            
           
            
