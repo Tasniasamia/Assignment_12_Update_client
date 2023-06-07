@@ -12,6 +12,7 @@ import Resister from "../Resister/Resister";
 import Login from "../Login/Login";
 import ErrorPage from "../Error/Error";
 import Dashboard_Layout from "../../../Layout/Dashboard_Layout/Dashboard_Layout";
+import Manage_Users from "../../Dashboard/Manage_Users/Manage_Users";
 
 
 const router = createBrowserRouter([
@@ -47,7 +48,10 @@ const router = createBrowserRouter([
     path:"Dashboard",
     element:<Dashboard_Layout></Dashboard_Layout>,
     children:[
-      
+      {
+        path:"manage_user",
+        element:<Manage_Users></Manage_Users>
+      }
     ]
   }
 ]);

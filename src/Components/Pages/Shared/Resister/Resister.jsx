@@ -4,14 +4,14 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import GoogleSign from '../Google_Sign/Google_Sign';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Resister = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
-
+const navigate=useNavigate();
 const{signup,data,displayname}=useContext(AuthContext)
     const onSubmit = data => {console.log(data);
         console.log(data.email);
-        console.log(data.password);
+      
         console.log(data.name);
         console.log(data.photo);
         console.log(data.confrim_password);
@@ -20,7 +20,8 @@ const{signup,data,displayname}=useContext(AuthContext)
             password:data.password,
             name:data.name,
             photo:data.photo,
-            role:"user"
+            role:"User",
+            role2:"Student"
         }
         signup(data.email,data.password)
         .then((userCredential) => {
@@ -30,39 +31,52 @@ const{signup,data,displayname}=useContext(AuthContext)
             displayname(data.name,data.photo)
             .then(() => {
               // Profile updated!
-              const userdata={name:data.name,email:data.email}
-            //   fetch('http://localhost:6769/users',{
-            //     method:"POST",
-            //     headers:{
-            //       "content-type":"application/json"
-            //     },
-            //     body:JSON.stringify(userdata)
-            //   }).then(res.json()).then(data=>{console.log(data);})
+            //   const userdata={name:data.name,email:data.email}
+              fetch('http://localhost:6889/users',{
+                method:"POST",
+                headers:{
+                  "content-type":"application/json"
+                },
+                body:JSON.stringify(alldata)
+              }).then(res=>res.json())
+              .then(data=>{console.log("data",data);
+            console.log("Efewfewr");
+            if(data.insertedId){
+                reset();  
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'You registration has been Successfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                 
+            }
+
+            })
+             
+            navigate('/');
+            
+            
+            })
            
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'You registration has been Successfull',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          reset();  
+       
               // ...
             }).catch((error) => {
               // An error occurred
               // ...
             });
          
-        //   navigate('/');
+       
             // signout();
             
           
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+         
+        //   .catch((error) => {
+        //     const errorCode = error.code;
+        //     const errorMessage = error.message;
            
-          });
+        //   });
          
     
     };
@@ -124,7 +138,7 @@ const{signup,data,displayname}=useContext(AuthContext)
               <input type="submit"value="Resister" className="btn  btn-wide mx-auto w-full my-5"/>
             
             </form>
-            <GoogleSign/>
+            {/* <GoogleSign/> */}
 <div className='text-center py-5'> Already have  an  account? Please <Link to="/login"className='text-primary'>Login</Link></div>
           </div>
         </div>

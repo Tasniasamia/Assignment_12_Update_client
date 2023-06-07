@@ -1,16 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import './DashboardLayout.css';
 const Dashboard_Layout = () => {
-    const user=true;
+    const user=false;
     const instructor=false;
-    const admin=false;
+    const admin=true;
     return (
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
-          <p>Lorem ipsum dolor sit amet.</p>
+          <Outlet/>
           <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
         
         </div> 
@@ -38,7 +38,7 @@ const Dashboard_Layout = () => {
             
            {
             admin &&   <>    <li><NavLink to="/Dashboard/manageclasses">Manage Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/manage_users">Manage Users</NavLink></li>
+            <li><NavLink to="/Dashboard/manage_user">Manage Users</NavLink></li>
             </>
            }
          
