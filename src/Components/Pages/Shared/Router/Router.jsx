@@ -7,6 +7,7 @@ import {
 import Home_Layout from "../../../Layout/Home_Layout/Home_Layout";
 import Home from "../../Home/Home/Home";
 import Course_Classes from "../../Home/Course_Classes/Course_Classes";
+import Instructor from "../../Home/Instructor/Instructor";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
         },{
             path:"/Course_class",
             element:<Course_Classes></Course_Classes>
+        },{
+            path:"/Instructor",
+            element:<Instructor></Instructor>
         }
     ]
   },
