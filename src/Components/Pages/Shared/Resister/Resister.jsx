@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import pik from '../../../../assets/sports.svg'
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 const Resister = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
 
-
+const{signup,data,displayname}=useContext(AuthContext)
     const onSubmit = data => {console.log(data);
         console.log(data.email);
         console.log(data.password);
@@ -18,47 +19,47 @@ const Resister = () => {
             photo:data.photo,
             role:"user"
         }
-        // signup(data.email,data.password)
-        // .then((userCredential) => {
+        signup(data.email,data.password)
+        .then((userCredential) => {
           
-        //     const user = userCredential.user;
-        //     console.log(user);
-        //     displayname(data.name,data.photo)
-        //     .then(() => {
-        //       // Profile updated!
-        //       const userdata={name:data.name,email:data.email}
-        //       fetch('http://localhost:6769/users',{
-        //         method:"POST",
-        //         headers:{
-        //           "content-type":"application/json"
-        //         },
-        //         body:JSON.stringify(userdata)
-        //       }).then(res.json()).then(data=>{console.log(data);})
-        //       // reset();
-        //   Swal.fire({
-        //     position: 'top-end',
-        //     icon: 'success',
-        //     title: 'You registration has been Successfull',
-        //     showConfirmButton: false,
-        //     timer: 1500
-        //   })
+            const user = userCredential.user;
+            console.log(user);
+            displayname(data.name,data.photo)
+            .then(() => {
+              // Profile updated!
+              const userdata={name:data.name,email:data.email}
+            //   fetch('http://localhost:6769/users',{
+            //     method:"POST",
+            //     headers:{
+            //       "content-type":"application/json"
+            //     },
+            //     body:JSON.stringify(userdata)
+            //   }).then(res.json()).then(data=>{console.log(data);})
+              reset();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'You registration has been Successfull',
+            showConfirmButton: false,
+            timer: 1500
+          })
               
-        //       // ...
-        //     }).catch((error) => {
-        //       // An error occurred
-        //       // ...
-        //     });
+              // ...
+            }).catch((error) => {
+              // An error occurred
+              // ...
+            });
          
         //   navigate('/');
-        //     // signout();
+            // signout();
             
           
-        //   })
-        //   .catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
            
-        //   });
+          });
          
     
     };
@@ -106,7 +107,7 @@ const Resister = () => {
                 </label>
                 <input type="text" placeholder="Corfrim Password"name="confrim_password" className="input input-bordered" {...register("confrim_password", { required: true })}  />
                
-                {errors.confrim_password && <span className='text-red-600'>This field is required</span>}
+                {errors.email && <span className='text-red-600'>This field is required</span>}
 
               </div>
               <div className="form-control">
