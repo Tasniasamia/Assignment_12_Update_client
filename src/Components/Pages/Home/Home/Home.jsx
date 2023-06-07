@@ -5,6 +5,7 @@ import useClass from '../../../../Hooks/useClass';
 import Card from './Card/Card';
 import Instructor_card from '../Instructor/Instructor_card/Instructor_card';
 import useInstructor from '../../../../Hooks/useInstructor';
+import About from './About_us/About';
 
 const Home = () => {
     const [classes]=useClass();
@@ -17,7 +18,7 @@ const Home = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
             <Carusal></Carusal>
-
+<About></About>
             <div className='my-24'>
                 <div className='text-center my-8'>
                     <h2 className='text-6xl font-extrabold'>POPULAR CLASSES</h2>
