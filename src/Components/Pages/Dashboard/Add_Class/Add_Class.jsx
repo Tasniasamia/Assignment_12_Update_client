@@ -11,7 +11,7 @@ const Class_name=event.target.class_name.value;
 const Class_image=event.target.Class_image.value;
 const Instructor_Name=event.target.Instructor_Name.value;
 const Instructor_Email=event.target.Useremail.value;
-const Available_seats=event.target.Available_seats.value;
+const Available_seats=parseInt(event.target.Available_seats.value);
 const Price=parseInt(event.target.price.value);
 const data={
     Class_name:Class_name,
@@ -21,14 +21,13 @@ const data={
     Available_seats:Available_seats,
     Price:Price,
     status:"Pending",
-    Approved:"Approve",
-    Deny:"Deny"
+  
 }
 
 
 console.log(data);
 
-axios.post('http://localhost:6889/AddClass', {data})
+axios.post('http://localhost:6889/AddClass', {...data})
 .then(res =>{
      console.log(res);
 if(res.data.insertedId){
@@ -48,6 +47,10 @@ event.target.Available_seats.value=" ";
 event.target.price.value=" ";
 
     }
+
+
+
+
     return (
         <div className='w-full p-5'>
             <div>

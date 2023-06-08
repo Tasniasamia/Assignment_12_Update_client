@@ -47,7 +47,7 @@ const Dashboard_Layout = () => {
             <li><NavLink to="/Dashboard/feedback" >Feedback</NavLink></li></>  */}
             
            {
-            admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manageclasses">Manage Classes</NavLink></li>
+            admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class">Manage Classes</NavLink></li>
             <li><NavLink to="/Dashboard/manage_user">Manage Users</NavLink></li>
             </>
            }
