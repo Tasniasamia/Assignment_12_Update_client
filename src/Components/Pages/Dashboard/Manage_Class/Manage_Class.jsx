@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import useManageClassData from '../../../../Hooks/useManageClassData';
+import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 
 const Manage_Class = () => {
+    const {data}=useContext(AuthContext)
     const[AddClassUsers,refetch]=useManageClassData();
     console.log(AddClassUsers);
     //update Approve
@@ -60,7 +62,7 @@ const update_denied=(id)=>{
 <tbody>
   {/* row 1 */}
   {
-    AddClassUsers.map((item,index)=> <tr key={item._id}>
+(data.email===AddClassUsers[0].email)  &&  AddClassUsers.map((item,index)=> <tr key={item._id}>
 
         <td>
           {index+1}

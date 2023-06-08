@@ -49,7 +49,7 @@ Instructor.slice(0,6).map(index=><Instructor_card key={index._id} indexdata={ind
 
 
 <div className='my-24'>
-    <div className='grid grid-cols-1 md:grid-cols-4 '>
+    <div className='grid grid-cols-1 md:grid-cols-4 gap-6 justify-items-center'>
 <div><img src="https://dtwhistledev.wpengine.com/wp-content/uploads/2015/11/client41.png" alt="contact" /></div>
 
 

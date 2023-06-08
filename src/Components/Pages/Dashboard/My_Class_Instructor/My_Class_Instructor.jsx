@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useManageClassData from '../../../../Hooks/useManageClassData';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 
 const My_Class_Instructor = () => {
+    const{data}=useContext(AuthContext);
     const [AddClassUsers,refetch]=useManageClassData();
     return (
         <div className='w-full '>
@@ -28,7 +30,7 @@ const My_Class_Instructor = () => {
 <tbody>
   {/* row 1 */}
   {
-    AddClassUsers.map((item,index)=> <tr key={item._id}>
+(data.email===AddClassUsers[0].email) &&   AddClassUsers.map((item,index)=> <tr key={item._id}>
 
         <td>
           {index+1}
