@@ -30,7 +30,7 @@ const My_Class_Instructor = () => {
 <tbody>
   {/* row 1 */}
   {
-(data.email===AddClassUsers[0].email) &&   AddClassUsers.map((item,index)=> <tr key={item._id}>
+   AddClassUsers.map((item,index)=> <tr key={item._id}>
 
         <td>
           {index+1}
