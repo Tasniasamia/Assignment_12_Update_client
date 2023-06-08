@@ -13,6 +13,7 @@ import Login from "../Login/Login";
 import ErrorPage from "../Error/Error";
 import Dashboard_Layout from "../../../Layout/Dashboard_Layout/Dashboard_Layout";
 import Manage_Users from "../../Dashboard/Manage_Users/Manage_Users";
+import Add_Class from "../../Dashboard/Add_Class/Add_Class";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,9 @@ const router = createBrowserRouter([
       {
         path:"manage_user",
         element:<Manage_Users></Manage_Users>
+      },{
+        path:"addclass",
+        element:<Add_Class></Add_Class>
       }
     ]
   }

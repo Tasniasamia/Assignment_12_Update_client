@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 const Header = () => {
+  const{data,signout}=useContext(AuthContext);
     const navitem=(
         <>
    <Link to="/">Home</Link>
@@ -9,8 +11,8 @@ const Header = () => {
    <Link to="/Instructor">Instructor</Link>
    <Link to="/Course_class">Classes</Link>
    <Link to="/Dashboard">Dashboard</Link>
-<Link to="/resister">Resister</Link>
-<Link to="/login">Login</Link>
+
+{/* <Link to="/login">Login</Link> */}
         </>
     )
     return (
@@ -36,10 +38,26 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Logout</a>
+          {/* <a className="btn">Logout</a> */}
+
+
+          <div className='flex justify-center items-center '>
+            <div>
+            {
+               data && <img src={data?.photoURL?data?.photoURL:"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?size=626&ext=jpg&uid=R81005743&ga=GA1.2.1636033582.1682966548&semt=ais"} alt="profile_imag"className='rounded-full me-2'style={{height:"40px",width:"40px"}}data-toggle="tooltip" data-placement="top" title={data.displayName}/>
+            }</div>
+            <div>
+         
+          {
+            data ?<button className='btn btn-active'onClick={signout}> Logout</button>: <button className='btn btn-active'><Link to="/login"> Login</Link></button>
+          }
+        </div></div>
         </div>
       </div>
     );
 };
 
 export default Header;
+
+
+// data.photoURL

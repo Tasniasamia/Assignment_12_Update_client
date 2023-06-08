@@ -50,7 +50,7 @@ const Manage_Users = () => {
     <th> Email</th>
     <th>Make Instructor</th>
     <th>Make Admin</th>
-    <th>Action</th>
+  
   </tr>
 </thead>
 <tbody>
@@ -81,9 +81,7 @@ photo} alt="Avatar Tailwind CSS Component" />
         <td  onClick={()=>update_Instructor2(item._id)}>
         {item.role}
         </td>
-        <th>
-            <button className='btn btn-dark'onClick={()=>deleteitem()}>Delete</button>
-        </th>
+       
       </tr>)
   }
 
