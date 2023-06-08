@@ -42,7 +42,7 @@ const Dashboard_Layout = () => {
             
           
             {data?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass">Add Class</NavLink></li>
-            <li><NavLink to="/Dashboard/MyclassInst">My Class</NavLink></li></>}
+            <li><NavLink to="/Dashboard/instructor_my_class">My Class</NavLink></li></>}
             {/* <li><NavLink to="/Dashboard/top-enrolled">Top Enrolled Student</NavLink></li>
             <li><NavLink to="/Dashboard/feedback" >Feedback</NavLink></li></>  */}
             

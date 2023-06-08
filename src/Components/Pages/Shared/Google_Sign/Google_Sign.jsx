@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 const GoogleSign = () => {
     const{googlesign}=useContext(AuthContext)
     // let navigate = useNavigate();
@@ -19,9 +20,43 @@ const GoogleSign = () => {
                 ,name:user.displayName
             }
             
- 
+ const alldata={
+    email:user.email,
+    password:user.password,
+    name:user.displayName,
+    photo:user.photoURL
+    ,
+    role:"User",
+    role2:"Student"
+ }
          
+   fetch('http://localhost:6889/users',{
+                method:"POST",
+                headers:{
+                  "content-type":"application/json"
+                },
+                body:JSON.stringify(alldata)
+              }).then(res=>res.json())
+              .then(data=>{console.log("data",data);
+            console.log("Efewfewr");
+            if(data.insertedId){
+                reset();  
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'You registration has been Successfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                 
+            }
 
+            })
+             
+         
+            
+            
+            // })
 
 
 

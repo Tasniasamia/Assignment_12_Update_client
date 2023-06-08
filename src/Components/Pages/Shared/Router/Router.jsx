@@ -15,6 +15,8 @@ import Dashboard_Layout from "../../../Layout/Dashboard_Layout/Dashboard_Layout"
 import Manage_Users from "../../Dashboard/Manage_Users/Manage_Users";
 import Add_Class from "../../Dashboard/Add_Class/Add_Class";
 import Manage_Class from "../../Dashboard/Manage_Class/Manage_Class";
+import My_Class_Instructor from "../../Dashboard/My_Class_Instructor/My_Class_Instructor";
+import Update_AddClass from "../../Dashboard/Update_AddClassData/Update_AddClass";
 
 
 const router = createBrowserRouter([
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
     path:"login",
     element:<Login></Login>
   },
-
+  
   {
     path:"Dashboard",
     element:<Dashboard_Layout></Dashboard_Layout>,
@@ -59,9 +61,20 @@ const router = createBrowserRouter([
       },{
         path:"manage_class",
         element:<Manage_Class></Manage_Class>
-      }
+      },{
+        path:"instructor_my_class",
+        element:<My_Class_Instructor></My_Class_Instructor>,
+       
+      },
+      {
+        path:"updateClass/:id",
+        element:<Update_AddClass></Update_AddClass>,
+        loader: ({params}) =>fetch(`http://localhost:6889/getAddClassbyId/${params.id}`)
+      },
     ]
-  }
+  },
+
+  
 ]);
 
 export default router;

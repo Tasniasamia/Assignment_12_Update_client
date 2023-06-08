@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import pik from '../../../../assets/sports.svg'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../AuthProvider/AuthProvider';
@@ -7,6 +7,7 @@ import GoogleSign from '../Google_Sign/Google_Sign';
 import { Link, useNavigate } from 'react-router-dom';
 const Resister = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
+    const [err,setError]=useState(null);
 const navigate=useNavigate();
 const{signup,data,displayname}=useContext(AuthContext)
     const onSubmit = data => {console.log(data);
@@ -14,7 +15,10 @@ const{signup,data,displayname}=useContext(AuthContext)
       
         console.log(data.name);
         console.log(data.photo);
-        console.log(data.confrim_password);
+        // console.log(data.confrim_password);
+        if(data.confrim_password!==data.password){
+            setError("The Password is not matched")
+        }
         const alldata={
             email:data.email,
             password:data.password,
@@ -125,7 +129,7 @@ const{signup,data,displayname}=useContext(AuthContext)
                 <input type="text" placeholder="Corfrim Password"name="confrim_password" className="input input-bordered" {...register("confrim_password", { required: true })}  />
                
                 {errors.email && <span className='text-red-600'>This field is required</span>}
-
+{err && <p className='text-red-600'>{err}</p>}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -138,7 +142,7 @@ const{signup,data,displayname}=useContext(AuthContext)
               <input type="submit"value="Resister" className="btn  btn-wide mx-auto w-full my-5"/>
             
             </form>
-            {/* <GoogleSign/> */}
+            <GoogleSign/>
 <div className='text-center py-5'> Already have  an  account? Please <Link to="/login"className='text-primary'>Login</Link></div>
           </div>
         </div>
