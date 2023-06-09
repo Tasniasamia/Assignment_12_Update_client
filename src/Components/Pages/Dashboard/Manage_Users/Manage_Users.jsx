@@ -79,7 +79,7 @@ photo} alt="Avatar Tailwind CSS Component" />
         <td onClick={()=>update_Instructor(item._id
 )}>{item.role2}</td>
         <td  onClick={()=>update_Instructor2(item._id)}>
-        {item.role}
+     <button className='btn btn-active'>Admin</button>
         </td>
        
       </tr>)
