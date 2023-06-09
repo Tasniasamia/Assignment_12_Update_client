@@ -29,13 +29,13 @@ const[student,setStudent]=useState(null);
 
     useEffect(()=>{
 
-    if(data?.email){
+    // if(data?.email){
     fetch(`http://localhost:6889/Studentwise/${data?.email}`)
        .then(res=>res.json())
       .then(data=>{console.log(data);setStudent(data)})
-      }
+    //   }
     
-  },[data])
+  },[data?.email])
 
 
   return student;

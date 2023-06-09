@@ -6,7 +6,7 @@ import { AuthContext } from '../Components/Pages/Shared/AuthProvider/AuthProvide
 const useManageClassDataAll = () => {
     const{data}=useContext(AuthContext)
     const { refetch, data:AddClassUsersAll=[] } = useQuery({
-        queryKey: ['getAddClassDataAll'],
+        queryKey: ['getAddClassDataAll',data?.email],
     
       queryFn:async () => {
             const response = await axios.get(`http://localhost:6889/getAddClassDataAll` )

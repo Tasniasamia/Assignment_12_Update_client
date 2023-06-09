@@ -2,9 +2,12 @@ import React from 'react';
 import useClass from '../../../../Hooks/useClass';
 import Course_card from './Course_card/Course_card';
 import { Helmet } from 'react-helmet';
+import useUserCollectiondata from '../../../../Hooks/useUserCollectiondata';
 
 const Course_Classes = () => {
     const [classes]=useClass();
+    // const[UserDataAsEmail]=useUserCollectiondata();
+    // console.log(UserDataAsEmail);
     return (
         <div className='my-20'>
             <Helmet>
