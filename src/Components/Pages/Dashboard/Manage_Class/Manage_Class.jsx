@@ -1,10 +1,11 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 import useManageClassDataAll from '../../../../Hooks/useManageClassdataAll';
 
 const Manage_Class = () => {
     const {data}=useContext(AuthContext)
     const[AddClassUsersAll,refetch]=useManageClassDataAll();
+    const[inputValue,setInputValue]=useState('');
     console.log(AddClassUsersAll);
     //update Approve
     const update_approved=(id)=>{
@@ -20,8 +21,8 @@ const Manage_Class = () => {
     }
 
 //Update Denied
-const textAreaRef = useRef();
-const textarea = textAreaRef?.current?.value;
+
+let textarea =inputValue;
 const update_denied=(id)=>{
     fetch(`http://localhost:6889/Status_Denied/${id}`,{
         method:"PUT",
@@ -87,7 +88,7 @@ photo} alt="Avatar Tailwind CSS Component" />
         <td>{item.status}</td>
         <td onClick={()=>update_approved(item._id)}><button className='btn btn-active'>Approve</button></td>
         <td onClick={()=>update_denied(item._id)}><button className='btn btn-active'>Deny</button></td>
-       <td><textarea  ref={textAreaRef}  cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
+       <td><textarea  onChange={(e) => setInputValue(e.target.value)} cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
       </tr>)
   }
 

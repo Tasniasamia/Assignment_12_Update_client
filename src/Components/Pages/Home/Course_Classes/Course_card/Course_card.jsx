@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useUserCollectiondata from '../../../../../Hooks/useUserCollectiondata';
 import axios from 'axios';
 import useManageClassDataAll from '../../../../../Hooks/useManageClassdataAll';
+import {  addToDb, getShoppingCart } from '../../../../../../LocalStorage_function2';
 
 const Course_card = ({indexdata}) => {
   // const [classes]=useClass();
@@ -17,55 +18,122 @@ const Course_card = ({indexdata}) => {
         
        
     // }
-    let seats=indexdata.Available_seats;
+    // let seats=indexdata.Available_seats;
   const collectdata=()=>{
-    seats--
-if(seats==0){
+   addToDb(UserDataAsEmail.email);
+ let localdata=getShoppingCart();
+//  console.log(localdata[UserDataAsEmail.email])
 
-  setAccept(true);
+if(indexdata._id in  localdata){
+  console.log(localdata);
+  axios.get(`http://localhost:6889/getApprovedClass/${indexdata._id}`)
+  .then(res=>{console.log(res.data)
+  let seats=res.data.Available_seats
+  seats--
+  if(seats==0){
+  // seats++
+    setAccept(true);
+   
+  }
+    const alldata={
+      class:res.data.Class_name,
+      image:res.data.Class_image,
+      Available_seats:seats,
+      price:res.data.Price,
+      instructor_email:UserDataAsEmail.email,
+      instructor_name:UserDataAsEmail.name,
+      class_id:res.data._id,
+      instructor_id:UserDataAsEmail._id,
+    
+    }
+  
+    axios.post('http://localhost:6889/CartCollection', {...alldata})
+    .then(res =>{
+         console.log(res);
+    if(res.data.insertedId){
+        alert("You have added Successfully");
+    }
+         
+        
+    })
+  
+  
+    fetch(`http://localhost:6889/UpdateAddClassdataseat/${res.data._id}`,{
+      method:"PATCH",
+      headers:{
+          "content-type":"application/json"
+      },
+      body:JSON.stringify({Available_seats:seats})
+  }).then(res=>res.json()).then(data=>{console.log(data);
+  if(data.modifiedCount>0){
+    // refetch();
+      alert("updated Successfully");
+  }
+  
+  })
+  
+  
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//     seats--
+// if(seats==0){
+// // seats++
+//   setAccept(true);
  
-}
-const alldata={
-  class:indexdata.Class_name,
-  image:indexdata.Class_image,
-  Available_seats:seats,
-  price:indexdata.Price,
-  instructor_email:UserDataAsEmail.email,
-  instructor_name:UserDataAsEmail.name,
-  class_id:indexdata._id,
-  instructor_id:UserDataAsEmail._id,
+// }
+// const alldata={
+//   class:indexdata.Class_name,
+//   image:indexdata.Class_image,
+//   Available_seats:seats,
+//   price:indexdata.Price,
+//   instructor_email:UserDataAsEmail.email,
+//   instructor_name:UserDataAsEmail.name,
+//   class_id:indexdata._id,
+//   instructor_id:UserDataAsEmail._id,
 
-}
-console.log(alldata);
+// }
+// console.log(alldata);
 // alert("Added Successfully");
 
 
-axios.post('http://localhost:6889/CartCollection', {...alldata})
-.then(res =>{
-     console.log(res);
-if(res.data.insertedId){
-    alert("You have added Successfully");
-}
+// axios.post('http://localhost:6889/CartCollection', {...alldata})
+// .then(res =>{
+//      console.log(res);
+// if(res.data.insertedId){
+//     alert("You have added Successfully");
+// }
      
     
-})
+// })
 
 
 
-//update Available_seats
-fetch(`http://localhost:6889/UpdateAddClassdataseat/${indexdata._id}`,{
-    method:"PATCH",
-    headers:{
-        "content-type":"application/json"
-    },
-    body:JSON.stringify({Available_seats:seats})
-}).then(res=>res.json()).then(data=>{console.log(data);
-if(data.modifiedCount>0){
-  // refetch();
-    alert("updated Successfully");
-}
+// update Available_seats
+// fetch(`http://localhost:6889/UpdateAddClassdataseat/${indexdata._id}`,{
+//     method:"PATCH",
+//     headers:{
+//         "content-type":"application/json"
+//     },
+//     body:JSON.stringify({Available_seats:seats})
+// }).then(res=>res.json()).then(data=>{console.log(data);
+// if(data.modifiedCount>0){
+//   // refetch();
+//     alert("updated Successfully");
+// }
 
-})
+// })
 
 
 

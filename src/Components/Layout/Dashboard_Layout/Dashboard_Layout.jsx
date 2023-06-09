@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import './DashboardLayout.css';
 import useInstructorOreder from '../../../Hooks/useInstructorOreder';
 import useAdmin from '../../../Hooks/useAdmin';
 import useStudent from '../../../Hooks/useStudent';
+import { AuthContext } from '../../Pages/Shared/AuthProvider/AuthProvider';
 const Dashboard_Layout = () => {
+    const {data}=useContext(AuthContext)
     const user=false;
     const instructor=true;
     const admin=false;
-    const data=useInstructorOreder();
+    const dataInstructor=useInstructorOreder();
     const admindata=useAdmin();
     const studentdata=useStudent();
     console.log(studentdata);
@@ -29,7 +31,8 @@ const Dashboard_Layout = () => {
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             {
-  studentdata?.Student &&<>
+  data && studentdata?.Student &&
+  <>
             
             <li><NavLink to="/Dashboard/myClasses">My Classes</NavLink></li>
             <li><NavLink to="/Dashboard/Enrolled Classes">Enrolled Classes</NavLink></li>
@@ -41,16 +44,16 @@ const Dashboard_Layout = () => {
             
             
           
-            {data?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass">Add Class</NavLink></li>
+            {data && dataInstructor?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass">Add Class</NavLink></li>
             <li><NavLink to="/Dashboard/instructor_my_class">My Class</NavLink></li></>}
             {/* <li><NavLink to="/Dashboard/top-enrolled">Top Enrolled Student</NavLink></li>
             <li><NavLink to="/Dashboard/feedback" >Feedback</NavLink></li></>  */}
             
-           {
-            admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class">Manage Classes</NavLink></li>
+      {
+         data && admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class">Manage Classes</NavLink></li>
             <li><NavLink to="/Dashboard/manage_user">Manage Users</NavLink></li>
             </>
-           }
+           }  
          
           
           
