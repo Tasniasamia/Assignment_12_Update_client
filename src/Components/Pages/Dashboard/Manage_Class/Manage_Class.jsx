@@ -1,11 +1,11 @@
 import React, { useContext, useRef } from 'react';
-import useManageClassData from '../../../../Hooks/useManageClassData';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
+import useManageClassDataAll from '../../../../Hooks/useManageClassdataAll';
 
 const Manage_Class = () => {
     const {data}=useContext(AuthContext)
-    const[AddClassUsers,refetch]=useManageClassData();
-    console.log(AddClassUsers);
+    const[AddClassUsersAll,refetch]=useManageClassDataAll();
+    console.log(AddClassUsersAll);
     //update Approve
     const update_approved=(id)=>{
         fetch(`http://localhost:6889/Status_Approve/${id}`,{
@@ -62,7 +62,7 @@ const update_denied=(id)=>{
 <tbody>
   {/* row 1 */}
   {
-  AddClassUsers.map((item,index)=> <tr key={item._id}>
+  AddClassUsersAll.map((item,index)=> <tr key={item._id}>
 
         <td>
           {index+1}

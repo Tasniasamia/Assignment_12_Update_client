@@ -7,7 +7,7 @@ const useClass = () => {
         queryKey: ['ClassesCollection'],
     
       queryFn:async () => {
-            const response = await axios.get(`http://localhost:6889/classes_name` )
+            const response = await axios.get(`http://localhost:6889/getApprovedClass` )
             console.log(response.data);
 
             return response.data
