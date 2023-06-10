@@ -34,7 +34,7 @@ const Dashboard_Layout = () => {
   data && studentdata?.Student &&
   <>
             
-            <li><NavLink to="/Dashboard/myClasses">My Classes</NavLink></li>
+            <li><NavLink to="/Dashboard/user_my_class">My Classes</NavLink></li>
             <li><NavLink to="/Dashboard/Enrolled Classes">Enrolled Classes</NavLink></li>
             <li><NavLink to="/Dashboard/Payment">Payment</NavLink></li>
             </>}

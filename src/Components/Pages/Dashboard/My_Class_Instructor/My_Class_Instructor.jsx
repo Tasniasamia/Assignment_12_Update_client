@@ -24,7 +24,7 @@ const My_Class_Instructor = () => {
    
     <th>Feedback</th>
     <th>Action</th>
-  
+  <th>Top Enrolled</th>
   </tr>
 </thead>
 <tbody>
@@ -45,6 +45,7 @@ const My_Class_Instructor = () => {
         <td>{item.status}</td>
        <td>{item.feedback}</td>
        <td><button className='btn btn-active'><Link to={`/Dashboard/updateClass/${item._id}`}>Update</Link>  </button></td>
+       <td className='text-center'>0</td>
       </tr>)
   }
 

@@ -10,35 +10,37 @@ const Course_card = ({indexdata}) => {
     const{UserDataAsEmail}=useUserCollectiondata();
     console.log(UserDataAsEmail);
     const [accept,setAccept]=useState(false);
-    // function handlecheck(){
+    // const [accept2,setAccept2]=useState(false);
+
+    function handlecheck(){
        
-    //     setAccept(true);
+        setAccept(true);
       
-    //      {accept?"":alert('Already enrolled')}
+         {accept?"":alert('Added Successfully')}
         
        
-    // }
+    }
     // let seats=indexdata.Available_seats;
   const collectdata=()=>{
-   addToDb(UserDataAsEmail.email);
- let localdata=getShoppingCart();
-//  console.log(localdata[UserDataAsEmail.email])
+//    addToDb(UserDataAsEmail.email);
+//  let localdata=getShoppingCart();
+// //  console.log(localdata[UserDataAsEmail.email])
 
-if(indexdata._id in  localdata){
-  console.log(localdata);
+// if(indexdata._id in  localdata){
+//   console.log(localdata);
   axios.get(`http://localhost:6889/getApprovedClass/${indexdata._id}`)
   .then(res=>{console.log(res.data)
-  let seats=res.data.Available_seats
-  seats--
-  if(seats==0){
-  // seats++
-    setAccept(true);
+  // let seats=res.data.Available_seats
+  // seats--
+  // if(seats==0){
+  // // seats++
+  //   setAccept(true);
    
-  }
+  // }
     const alldata={
       class:res.data.Class_name,
       image:res.data.Class_image,
-      Available_seats:seats,
+      Available_seats:res.data.Available_seats,
       price:res.data.Price,
       instructor_email:UserDataAsEmail.email,
       instructor_name:UserDataAsEmail.name,
@@ -58,23 +60,23 @@ if(indexdata._id in  localdata){
     })
   
   
-    fetch(`http://localhost:6889/UpdateAddClassdataseat/${res.data._id}`,{
-      method:"PATCH",
-      headers:{
-          "content-type":"application/json"
-      },
-      body:JSON.stringify({Available_seats:seats})
-  }).then(res=>res.json()).then(data=>{console.log(data);
-  if(data.modifiedCount>0){
-    // refetch();
-      alert("updated Successfully");
-  }
+  //   fetch(`http://localhost:6889/UpdateAddClassdataseat/${res.data._id}`,{
+  //     method:"PATCH",
+  //     headers:{
+  //         "content-type":"application/json"
+  //     },
+  //     body:JSON.stringify({Available_seats:seats})
+  // }).then(res=>res.json()).then(data=>{console.log(data);
+  // if(data.modifiedCount>0){
+  //   // refetch();
+  //     alert("updated Successfully");
+  // }
+  
+  // })
+  
   
   })
-  
-  
-  })
-}
+// }
 
 
 
@@ -165,9 +167,9 @@ Price}</div>
 
 {
  ((indexdata.Available_seats>0) && (UserDataAsEmail.role2=="Student")) ?
-
-            <button className='btn btn-wide'onClick={collectdata}disabled={accept}>Enroll Now</button>
-       
+<div onClick={handlecheck}>
+            <button className='btn btn-wide'onClick={collectdata}>Enroll Now</button>
+    </div>
  :<button className="btn btn-wide"disabled>Enroll Now</button>
 }
         

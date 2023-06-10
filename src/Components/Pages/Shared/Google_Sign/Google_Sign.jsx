@@ -6,7 +6,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 const GoogleSign = () => {
     const{googlesign}=useContext(AuthContext)
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
     // let location = useLocation();
     // let from=location.state?.from?.pathname || "/";
 
@@ -44,7 +44,7 @@ const GoogleSign = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'You registration has been Successfull',
+                    title: 'You Registration has been Successfull',
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -58,8 +58,14 @@ const GoogleSign = () => {
             
             // })
 
-
-
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'You login has been Successfull',
+                showConfirmButton: false,
+                timer: 1500
+              })
+navigate('/');
           
           }).catch((error) => {
            

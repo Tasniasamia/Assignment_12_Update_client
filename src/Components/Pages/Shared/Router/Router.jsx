@@ -17,6 +17,7 @@ import Add_Class from "../../Dashboard/Add_Class/Add_Class";
 import Manage_Class from "../../Dashboard/Manage_Class/Manage_Class";
 import My_Class_Instructor from "../../Dashboard/My_Class_Instructor/My_Class_Instructor";
 import Update_AddClass from "../../Dashboard/Update_AddClassData/Update_AddClass";
+import My_Class_User from "../../Dashboard/My_Class_User/My_Class_User";
 
 
 const router = createBrowserRouter([
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
         element:<Update_AddClass></Update_AddClass>,
         loader: ({params}) =>fetch(`http://localhost:6889/getAddClassbyId/${params.id}`)
       },
+      {
+        path:"user_my_class",
+        element:<My_Class_User></My_Class_User>
+      }
     ]
   },
 

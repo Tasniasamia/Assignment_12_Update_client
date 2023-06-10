@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import pik from '../../../../assets/login.svg';
 import GoogleSign from '../Google_Sign/Google_Sign';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 const Login = () => {
+    const navigate=useNavigate()
     const {signin } = useContext(AuthContext);
     const[success,setSuccess]=useState(null);
     const[err,setErr]=useState(null);
@@ -28,11 +29,12 @@ const Login = () => {
                   popup: 'animate__animated animate__fadeOutUp'
                 }
               })
+
               reset();
             //   console.log(user);
             setSuccess("User has submited successfully");
             setErr('');
-          
+          navigate('/')
             // ...
           })
           .catch((error) => {
