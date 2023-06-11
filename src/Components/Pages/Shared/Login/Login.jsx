@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import pik from '../../../../assets/login.svg';
 import GoogleSign from '../Google_Sign/Google_Sign';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 const Login = () => {
-    const navigate=useNavigate()
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from=location.state?.from?.pathname ;
+    console.log(location);
     const {signin } = useContext(AuthContext);
     const[success,setSuccess]=useState(null);
     const[err,setErr]=useState(null);
@@ -19,7 +22,7 @@ const Login = () => {
             
             const user = userCredential.user;
             console.log(user);
-            // navigate(from, { replace: true });
+         
             Swal.fire({
                 title: 'Success',
                 showClass: {
@@ -34,7 +37,7 @@ const Login = () => {
             //   console.log(user);
             setSuccess("User has submited successfully");
             setErr('');
-          navigate('/')
+            navigate(from, { replace: true });
             // ...
           })
           .catch((error) => {

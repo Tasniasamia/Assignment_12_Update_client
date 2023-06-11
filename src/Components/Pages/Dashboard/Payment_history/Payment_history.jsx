@@ -1,11 +1,11 @@
-import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
+import axios from 'axios';
 
-const User_Enrollclass = () => {
+const Payment_history = () => {
     const[enrolldata,setEnrolldata]=useState([]);
     const{data}=useContext(AuthContext)
-    axios.get(`http://localhost:6889/enrollemail?email=${data?.email}`)
+    axios.get(`http://localhost:6889/enrollemail2?email=${data?.email}`)
     .then(res=>{console.log(res.data);
     setEnrolldata(res.data);
     
@@ -23,9 +23,9 @@ const User_Enrollclass = () => {
 
     <th>class</th>
     <th> image</th>
-  
-
-   <th>Price</th>
+  <th>Price</th>
+    <th>Transction Id</th>
+   
     <th>Payment Status</th>
   
   
@@ -53,8 +53,10 @@ const User_Enrollclass = () => {
                 
               </div>
             </td>
-          <td>{item.price}</td>
-            <td>Paid</td>
+<td>{item.price}</td>
+            <td>{item.transaction_id} </td>
+          
+            <td>Succeded</td>
        
       </tr>)
   }
@@ -70,4 +72,4 @@ const User_Enrollclass = () => {
     );
 };
 
-export default User_Enrollclass;
+export default Payment_history;

@@ -187,11 +187,13 @@ fetch(`http://localhost:6889/updateaddclassdataenroll/${enroll.class_id}`,{
 const paysuccessdata={
 class:enroll.class,
 image:enroll.image,
-buyer_email:data?.email,
+
 instructor_email:enroll.instructor_email,
 instructor_id:enroll.instructor_id,
 class_id:enroll.class_id,
-date:new Date()
+date:new Date(),
+transaction_id:paymentIntent.id,
+price:enroll?.price
 
 
 }

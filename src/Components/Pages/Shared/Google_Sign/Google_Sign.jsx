@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 const GoogleSign = () => {
     const{googlesign}=useContext(AuthContext)
     let navigate = useNavigate();
+    let location = useLocation();
+    let from=location.state?.from?.pathname || "/";
     // let location = useLocation();
     // let from=location.state?.from?.pathname || "/";
 
@@ -65,7 +67,7 @@ const GoogleSign = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
-navigate('/');
+              navigate(from, { replace: true });
           
           }).catch((error) => {
            

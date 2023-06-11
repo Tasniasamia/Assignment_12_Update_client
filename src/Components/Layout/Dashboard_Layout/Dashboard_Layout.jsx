@@ -42,6 +42,7 @@ const Dashboard_Layout = () => {
             
             <li><NavLink to="/Dashboard/user_my_class">My Classes</NavLink></li>
             <li><NavLink to="/Dashboard/enroll">Enrolled Classes</NavLink></li>
+            <li><NavLink to="/Dashboard/payment_history">Payment History</NavLink></li>
             {/* <li><NavLink to="/Dashboard/payment">Payment</NavLink></li> */}
             </>}
 

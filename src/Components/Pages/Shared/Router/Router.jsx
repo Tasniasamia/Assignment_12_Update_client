@@ -20,6 +20,8 @@ import Update_AddClass from "../../Dashboard/Update_AddClassData/Update_AddClass
 import My_Class_User from "../../Dashboard/My_Class_User/My_Class_User";
 import Strippayment from "../../Dashboard/Student_Payment/Strippayment";
 import User_Enrollclass from "../../Dashboard/User_Enrollclass/User_Enrollclass";
+import Payment_history from "../../Dashboard/Payment_history/Payment_history";
+import Private_route from "../PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
   
   {
     path:"Dashboard",
-    element:<Dashboard_Layout></Dashboard_Layout>,
+    element:<Private_route><Dashboard_Layout></Dashboard_Layout></Private_route>,
     children:[
       {
         path:"manage_user",
@@ -83,6 +85,9 @@ const router = createBrowserRouter([
       },{
         path:"enroll",
         element:<User_Enrollclass></User_Enrollclass>
+      },{
+        path:"payment_history",
+        element:<Payment_history></Payment_history>
       }
     ]
   },
