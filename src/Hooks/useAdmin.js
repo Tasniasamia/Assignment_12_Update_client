@@ -2,18 +2,19 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Components/Pages/Shared/AuthProvider/AuthProvider';
+import useAxiosSecure from './useAxiosSecure';
 
 const useAdmin = () => {
     const{data,loading}=useContext(AuthContext);
     // const token=localStorage.getItem('accesstoken');
     // const [axiosSecure]=useAxiosSecure();
 const[admin,setAdmin]=useState(null);
-    // const { data:isInstructor=[], isLoading: isInstructorLoading} = useQuery({
-    //     queryKey: ['isInstructor',data?.email],
+    // const { data:admin=[], isLoading: isadminLoading} = useQuery({
+    //     queryKey: ['Adminwise',data?.email],
     //     enabled:!loading,
 
     //     queryFn:async () => {
-    //         const response =await axios.get(`http://localhost:6889/Instructorwise/${data?.email}`)
+    //         const response =await axios.get(`/Adminwise/${data?.email}`)
             
     //       console.log(response.data);
           
@@ -24,7 +25,7 @@ const[admin,setAdmin]=useState(null);
     //     })
    
         
-    //     return [isInstructor,isInstructorLoading];
+    //     return [admin,isadminLoading];
 
 
     useEffect(()=>{

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Components/Pages/Shared/AuthProvider/AuthProvider";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useInstructor = () => {

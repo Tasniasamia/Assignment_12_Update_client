@@ -4,6 +4,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Components/Pages/Shared/AuthProvider/AuthProvider';
+// const axiosSecure = axios.create({
+//     baseURL: 'http://localhost:6889', 
+//   });
 
 const useAxiosSecure = () => {
   const { signout } = useContext(AuthContext);

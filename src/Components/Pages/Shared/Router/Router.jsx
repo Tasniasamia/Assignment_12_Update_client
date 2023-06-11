@@ -18,6 +18,7 @@ import Manage_Class from "../../Dashboard/Manage_Class/Manage_Class";
 import My_Class_Instructor from "../../Dashboard/My_Class_Instructor/My_Class_Instructor";
 import Update_AddClass from "../../Dashboard/Update_AddClassData/Update_AddClass";
 import My_Class_User from "../../Dashboard/My_Class_User/My_Class_User";
+import Strippayment from "../../Dashboard/Student_Payment/Strippayment";
 
 
 const router = createBrowserRouter([
@@ -75,6 +76,9 @@ const router = createBrowserRouter([
       {
         path:"user_my_class",
         element:<My_Class_User></My_Class_User>
+      },{
+        path:"payment/:id",
+        element:<Strippayment></Strippayment>
       }
     ]
   },

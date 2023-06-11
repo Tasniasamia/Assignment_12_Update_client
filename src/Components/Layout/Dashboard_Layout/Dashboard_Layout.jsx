@@ -5,18 +5,19 @@ import useInstructorOreder from '../../../Hooks/useInstructorOreder';
 import useAdmin from '../../../Hooks/useAdmin';
 import useStudent from '../../../Hooks/useStudent';
 import { AuthContext } from '../../Pages/Shared/AuthProvider/AuthProvider';
+import { Fade } from 'react-awesome-reveal';
 const Dashboard_Layout = () => {
     const {data}=useContext(AuthContext)
-    const user=false;
-    const instructor=true;
-    const admin=false;
+    // const user=false;
+    // const instructor=true;
+    // const admin=false;
     const dataInstructor=useInstructorOreder();
     const admindata=useAdmin();
     const studentdata=useStudent();
-    console.log(studentdata);
-    console.log(admindata);
+    // console.log(studentdata);
+    // console.log(admindata);
 
-    console.log(data?.Instructor);
+    // console.log(data?.Instructor);
     return (
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -28,15 +29,16 @@ const Dashboard_Layout = () => {
         </div> 
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
+          <Fade>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             {
-  data && studentdata?.Student &&
+   data && studentdata?.Student &&
   <>
             
             <li><NavLink to="/Dashboard/user_my_class">My Classes</NavLink></li>
             <li><NavLink to="/Dashboard/Enrolled Classes">Enrolled Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/Payment">Payment</NavLink></li>
+            {/* <li><NavLink to="/Dashboard/payment">Payment</NavLink></li> */}
             </>}
 
             
@@ -44,13 +46,13 @@ const Dashboard_Layout = () => {
             
             
           
-            {data && dataInstructor?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass">Add Class</NavLink></li>
+            {data &&  dataInstructor?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass">Add Class</NavLink></li>
             <li><NavLink to="/Dashboard/instructor_my_class">My Class</NavLink></li></>}
             {/* <li><NavLink to="/Dashboard/top-enrolled">Top Enrolled Student</NavLink></li>
             <li><NavLink to="/Dashboard/feedback" >Feedback</NavLink></li></>  */}
             
       {
-         data && admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class">Manage Classes</NavLink></li>
+      data &&   admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class">Manage Classes</NavLink></li>
             <li><NavLink to="/Dashboard/manage_user">Manage Users</NavLink></li>
             </>
            }  
@@ -59,7 +61,7 @@ const Dashboard_Layout = () => {
           
          
           </ul>
-        
+          </Fade>
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import useCartCollection from '../../../../Hooks/useCartCollection';
+import { Link } from 'react-router-dom';
 
 const My_Class_User = () => {
     const[cart,refetch]=useCartCollection();
@@ -50,7 +51,7 @@ const My_Class_User = () => {
             </td>
         <td>{item.Available_seats}</td>
         <td>${item.price}</td>
-       <td><button className='btn btn-active'>PAY</button></td>
+       <td><button className='btn btn-active'><Link to={`/Dashboard/payment/${item._id}`}>PAY</Link>  </button></td>
        <td><button className='btn btn-active'>Delete</button></td>
       </tr>)
   }
