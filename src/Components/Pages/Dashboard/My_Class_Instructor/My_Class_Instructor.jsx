@@ -2,13 +2,17 @@ import React, { useContext } from 'react';
 import useManageClassData from '../../../../Hooks/useManageClassData';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const My_Class_Instructor = () => {
     const{data}=useContext(AuthContext);
     const [AddClassUsers,refetch]=useManageClassData();
     return (
         <div className='w-full '>
-           
+            <Helmet>
+        <title>Whistle | Instructor Class</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className=" w-full overflow-y-scroll  h-[600px]">
 <table className="table w-full  ">
 {/* head */}
@@ -45,7 +49,7 @@ const My_Class_Instructor = () => {
         <td>{item.status}</td>
        <td>{item.feedback}</td>
        <td><button className='btn btn-active'><Link to={`/Dashboard/updateClass/${item._id}`}>Update</Link>  </button></td>
-       <td className='text-center'>{item.Totalenroll?item.Totalenroll:0}</td>
+       <td className='text-center'>{item.totalenroll?item.totalenroll:0}</td>
       </tr>)
   }
 

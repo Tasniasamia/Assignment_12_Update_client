@@ -5,6 +5,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import GoogleSign from '../Google_Sign/Google_Sign';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 const Resister = () => {
     const { register,reset, handleSubmit,formState: { errors } } = useForm();
     const [err,setError]=useState(null);
@@ -36,7 +37,7 @@ const{signup,data,displayname}=useContext(AuthContext)
             .then(() => {
               // Profile updated!
             //   const userdata={name:data.name,email:data.email}
-              fetch('http://localhost:6889/users',{
+              fetch('https://assignment-12-server-tasniasamia.vercel.app/users',{
                 method:"POST",
                 headers:{
                   "content-type":"application/json"
@@ -86,7 +87,10 @@ const{signup,data,displayname}=useContext(AuthContext)
     };
     return (
         <div className='my-24'>
-            
+             <Helmet>
+        <title>Whistle | Resister</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
             <div>
             <div className=" md:flex  py-40  items-center justify-evenly h-[100vh] ">
           <div className="text-center lg:text-left me-2 md:w-1/3 w-full">

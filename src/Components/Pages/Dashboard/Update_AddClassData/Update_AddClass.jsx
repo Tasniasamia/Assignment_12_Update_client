@@ -29,7 +29,7 @@ console.log(data);
 
 
 
-fetch(`http://localhost:6889/Update_AddClassItem/${loaddata._id}`,{
+fetch(`https://assignment-12-server-tasniasamia.vercel.app/Update_AddClassItem/${loaddata._id}`,{
     method:"PATCH",
     headers:{
         "content-type":"application/json"

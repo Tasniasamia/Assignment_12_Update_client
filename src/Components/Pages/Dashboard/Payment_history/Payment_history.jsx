@@ -1,18 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Payment_history = () => {
     const[enrolldata,setEnrolldata]=useState([]);
     const{data}=useContext(AuthContext)
-    axios.get(`http://localhost:6889/enrollemail2?email=${data?.email}`)
+    axios.get(`https://assignment-12-server-tasniasamia.vercel.app/enrollemail2?email=${data?.email}`)
     .then(res=>{console.log(res.data);
     setEnrolldata(res.data);
     
     })
     return (
         <div className='w-full '>
-           
+           <Helmet>
+        <title>Whistle | Payment History</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet> 
         <div className=" w-full overflow-y-scroll  h-[600px]">
 <table className="table w-full  ">
 {/* head */}

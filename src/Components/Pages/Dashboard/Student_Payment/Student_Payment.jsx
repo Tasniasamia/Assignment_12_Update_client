@@ -8,7 +8,7 @@ import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
-    let totalenroll=0;
+  
     const stripe = useStripe();
     const elements = useElements();
     const {data}=useContext(AuthContext);
@@ -41,7 +41,7 @@ const[transactiion,setTransaction]=useState("");
   //price getting for payment
 useEffect(()=>{
 
-    fetch(`http://localhost:6889/Cartdata/${id}`)
+    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Cartdata/${id}`)
     .then(res=>res.json())
     .then(data=>{console.log(data);setEnroll(data)})
 },[id])
@@ -63,7 +63,7 @@ useEffect(()=>{
 
 // console.log(enroll.price);
 
-    fetch('http://localhost:6889/create-payment-intent',{
+    fetch('https://assignment-12-server-tasniasamia.vercel.app/create-payment-intent',{
         method:"POST",
         headers:{
           "content-type":"application/json"
@@ -148,10 +148,11 @@ useEffect(()=>{
 let seats=enroll.Available_seats
 
 if(paymentIntent.status==="succeeded"){
+    // let totalenroll=0;
     seats--
-    totalenroll++;
+  
 //update available seats into addClass
-  fetch(`http://localhost:6889/UpdateAddClassdataseat/${enroll.class_id}`,{
+  fetch(`https://assignment-12-server-tasniasamia.vercel.app/UpdateAddClassdataseat/${enroll.class_id}`,{
       method:"PATCH",
       headers:{
           "content-type":"application/json"
@@ -168,12 +169,19 @@ if(paymentIntent.status==="succeeded"){
 
 //update available seats into addClass
 //update available totalenroll number
-fetch(`http://localhost:6889/updateaddclassdataenroll/${enroll.class_id}`,{
+let totalenroll;
+if(!totalenroll){
+    totalenroll=0;
+}
+else{
+    totalenroll=totalenroll+1
+
+fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateaddclassdataenroll/${enroll.class_id}`,{
     method:"PUT",
     headers:{
         "content-type":"application/json"
     },
-     body:JSON.stringify({Totalenroll:totalenroll})
+     body:JSON.stringify({totalenroll:totalenroll})
  }).then(res=>res.json()).then(data=>{console.log(data);
  if(data.modifiedCount>0){
    // refetch();
@@ -181,7 +189,7 @@ fetch(`http://localhost:6889/updateaddclassdataenroll/${enroll.class_id}`,{
  }
 
  })
-
+}
 
 //update available seats into cart
 const paysuccessdata={
@@ -199,7 +207,7 @@ price:enroll?.price
 }
 console.log(paysuccessdata);
 
-axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
+axios.post('https://assignment-12-server-tasniasamia.vercel.app/enrollClass',{...paysuccessdata})
 .then(res=>{
           console.log(res.data);
          if(res.data.insertedId) {
@@ -209,7 +217,7 @@ axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
         })
  
  //delete from cartCollection
- fetch(`http://localhost:6889/cartdatadel/${id}`,{
+ fetch(`https://assignment-12-server-tasniasamia.vercel.app/cartdatadel/${id}`,{
     method:"DELETE"
 }).then(res=>res.json()).then(data=>{console.log(data);if(data.deletedCount >0){
 

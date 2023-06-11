@@ -5,10 +5,11 @@ import GoogleSign from '../Google_Sign/Google_Sign';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     let navigate = useNavigate();
     let location = useLocation();
-    let from=location.state?.from?.pathname ;
+    let from=location.state?.from?.pathname || "/";
     console.log(location);
     const {signin } = useContext(AuthContext);
     const[success,setSuccess]=useState(null);
@@ -52,7 +53,10 @@ const Login = () => {
 
     return (
         <div className='my-24'>
-            
+             <Helmet>
+        <title>Whistle | Login</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
            
             <div className=" md:flex  py-40  items-center justify-evenly h-[100vh] ">
           <div className="text-center lg:text-left me-2 md:w-1/3 w-full">

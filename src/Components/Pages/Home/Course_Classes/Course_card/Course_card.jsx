@@ -37,6 +37,7 @@ const Course_card = ({indexdata}) => {
   //   setAccept(true);
    
   // }
+  
     const alldata={
       class:res.data.Class_name,
       image:res.data.Class_image,
@@ -46,6 +47,7 @@ const Course_card = ({indexdata}) => {
       instructor_name:UserDataAsEmail.name,
       class_id:res.data._id,
       instructor_id:UserDataAsEmail._id,
+      totalenroll:parseInt(0),
     
     }
   
@@ -142,8 +144,10 @@ const Course_card = ({indexdata}) => {
 
 
   }
+  let roledata=UserDataAsEmail.role2==("Admin"||"Instructor");
+  let available_seats=indexdata.Available_seats===0;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className={(roledata || available_seats)?"card w-96 bg-red-300 shadow-xl":"card w-96 bg-base-100 shadow-xl"}>
         <figure><img src={indexdata.
 Class_image} alt="Shoes"style={{height:"250px",width:"100%"}} className='object-cover'/></figure>
         <div className="card-body">

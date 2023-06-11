@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 import useManageClassDataAll from '../../../../Hooks/useManageClassdataAll';
+import { Helmet } from 'react-helmet';
 
 const Manage_Class = () => {
     const {data}=useContext(AuthContext)
@@ -9,7 +10,7 @@ const Manage_Class = () => {
     console.log(AddClassUsersAll);
     //update Approve
     const update_approved=(id)=>{
-        fetch(`http://localhost:6889/Status_Approve/${id}`,{
+        fetch(`https://assignment-12-server-tasniasamia.vercel.app/Status_Approve/${id}`,{
             method:"PATCH"
         }).then(res=>res.json()).then(data=>{console.log(data);
         if(data.modifiedCount>0){
@@ -24,7 +25,7 @@ const Manage_Class = () => {
 
 let textarea =inputValue;
 const update_denied=(id)=>{
-    fetch(`http://localhost:6889/Status_Denied/${id}`,{
+    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Status_Denied/${id}`,{
         method:"PUT",
         headers:{
             "content-type":"application/json"
@@ -41,7 +42,10 @@ const update_denied=(id)=>{
 
     return (
         <div className='w-full '>
-           
+            <Helmet>
+        <title>Whistle | Manage Class</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className=" w-full overflow-y-scroll  h-[600px]">
 <table className="table w-full  ">
 {/* head */}
@@ -88,7 +92,7 @@ photo} alt="Avatar Tailwind CSS Component" />
         <td>{item.status}</td>
         <td onClick={()=>update_approved(item._id)}><button className='btn btn-active'>Approve</button></td>
         <td onClick={()=>update_denied(item._id)}><button className='btn btn-active'>Deny</button></td>
-       <td><textarea  onChange={(e) => setInputValue(e.target.value)} cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
+       <td><textarea disabled={item.status==="Approved"} onChange={(e) => setInputValue(e.target.value)} cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
       </tr>)
   }
 

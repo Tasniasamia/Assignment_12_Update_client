@@ -6,6 +6,7 @@ import useAdmin from '../../../Hooks/useAdmin';
 import useStudent from '../../../Hooks/useStudent';
 import { AuthContext } from '../../Pages/Shared/AuthProvider/AuthProvider';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet';
 const Dashboard_Layout = () => {
     const {data}=useContext(AuthContext)
     // const user=false;
@@ -19,6 +20,14 @@ const Dashboard_Layout = () => {
 
     // console.log(data?.Instructor);
     return (
+        <>
+         <Helmet>
+        <title>Whistle | Dashboard</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+        
+        
+      
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
@@ -68,7 +77,7 @@ const Dashboard_Layout = () => {
           </ul>
           {/* </Fade> */}
         </div>
-      </div>
+      </div>  </>
     );
 };
 

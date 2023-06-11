@@ -31,7 +31,7 @@ const[admin,setAdmin]=useState(null);
     useEffect(()=>{
 
     if(data?.email){
-    fetch(`http://localhost:6889/Adminwise/${data?.email}`)
+    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Adminwise/${data?.email}`)
        .then(res=>res.json())
       .then(data=>{console.log(data);setAdmin(data)})
       }

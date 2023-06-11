@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Add_Class = () => {
     const {data}=useContext(AuthContext);
@@ -21,13 +22,14 @@ const data={
     Available_seats:Available_seats,
     Price:Price,
     status:"Pending",
+    
   
 }
 
 
 console.log(data);
 
-axios.post('http://localhost:6889/AddClass', {...data})
+axios.post('https://assignment-12-server-tasniasamia.vercel.app/AddClass', {...data})
 .then(res =>{
      console.log(res);
 if(res.data.insertedId){
@@ -53,6 +55,10 @@ event.target.price.value=" ";
 
     return (
         <div className='w-full p-5'>
+           <Helmet>
+        <title>Whistle | Add NEW CLASS</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
             <div>
                <h1 className='text-5xl font-bold my-5 text-center'>Add Course Class</h1>
             </div>

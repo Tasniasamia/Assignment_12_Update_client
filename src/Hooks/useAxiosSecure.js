@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate(); 
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:6889', 
+    baseURL: 'https://assignment-12-server-tasniasamia.vercel.app', 
   });
 
   useEffect(() => {

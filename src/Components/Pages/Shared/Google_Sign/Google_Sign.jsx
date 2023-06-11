@@ -32,7 +32,7 @@ const GoogleSign = () => {
     role2:"Student"
  }
          
-   fetch('http://localhost:6889/users',{
+   fetch('https://assignment-12-server-tasniasamia.vercel.app/users',{
                 method:"POST",
                 headers:{
                   "content-type":"application/json"

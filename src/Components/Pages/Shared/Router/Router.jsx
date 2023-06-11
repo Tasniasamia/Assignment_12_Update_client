@@ -74,7 +74,7 @@ const router = createBrowserRouter([
       {
         path:"updateClass/:id",
         element:<Update_AddClass></Update_AddClass>,
-        loader: ({params}) =>fetch(`http://localhost:6889/getAddClassbyId/${params.id}`)
+        loader: ({params}) =>fetch(`https://assignment-12-server-tasniasamia.vercel.app/getAddClassbyId/${params.id}`)
       },
       {
         path:"user_my_class",

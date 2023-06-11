@@ -1,13 +1,30 @@
 import React from 'react';
 import useCartCollection from '../../../../Hooks/useCartCollection';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const My_Class_User = () => {
     const[cart,refetch]=useCartCollection();
     console.log(cart);
+    const deletdata=(id)=>{
+        fetch(`https://assignment-12-server-tasniasamia.vercel.app/cartdatadel/${id}`,{
+            method:"DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>{console.log(data);
+        if(data.deletedCount >0){
+            refetch();
+            alert("Deleted Successfully")
+        }
+        
+        })
+    }
     return (
         <div className='w-full '>
-           
+            <Helmet>
+        <title>Whistle | My Selected Class</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className=" w-full overflow-y-scroll  h-[600px]">
 <table className="table w-full  ">
 {/* head */}
@@ -22,7 +39,7 @@ const My_Class_User = () => {
     <th>price</th>
    
     <th>PAY</th>
-    {/* <th>Remove</th> */}
+    <th>Remove</th>
   
   </tr>
 </thead>
@@ -52,7 +69,7 @@ const My_Class_User = () => {
         <td>{item.Available_seats}</td>
         <td>${item.price}</td>
        <td><button className='btn btn-active'><Link to={`/Dashboard/payment/${item._id}`}>PAY</Link>  </button></td>
-       {/* <td><button className='btn btn-active'>Delete</button></td> */}
+       <td onClick={()=>deletdata(item._id)}><button className='btn btn-active'>Delete</button></td>
       </tr>)
   }
 

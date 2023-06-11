@@ -1,13 +1,14 @@
 import React from 'react';
 import UseUsers from '../../../../Hooks/UseUsers';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const Manage_Users = () => {
     const [Users,refetch]=UseUsers();
     //update data
     const update_Instructor=(id)=>{
 
-    fetch(`http://localhost:6889/updateinstructor/${id}`,{
+    fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateinstructor/${id}`,{
         method:"PATCH"
     }).then(res=>res.json()).then(data=>{console.log(data);
     if(data.modifiedCount>0){
@@ -22,7 +23,7 @@ const Manage_Users = () => {
     }
     const update_Instructor2=(id)=>{
 
-        fetch(`http://localhost:6889/updateinstructor2/${id}`,{
+        fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateinstructor2/${id}`,{
             method:"PATCH"
         }).then(res=>res.json()).then(data=>{console.log(data);
         if(data.modifiedCount>0){
@@ -37,7 +38,10 @@ const Manage_Users = () => {
         }
     return (
         <div className='w-full '>
-           
+            <Helmet>
+        <title>Whistle | Manage User</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className=" w-full overflow-y-scroll  h-[600px]">
 <table className="table w-full  ">
 {/* head */}
@@ -48,6 +52,7 @@ const Manage_Users = () => {
 
     <th>Name</th>
     <th> Email</th>
+    <th>User</th>
     <th>Make Instructor</th>
     <th>Make Admin</th>
   
@@ -76,8 +81,9 @@ photo} alt="Avatar Tailwind CSS Component" />
 {item.name}              
         </td>
         <td>{item.email}</td>
+        <td>{item.role2}</td>
         <td onClick={()=>update_Instructor(item._id
-)}>{item.role2}</td>
+)}><button className='btn btn-active'>Instructor</button></td>
         <td  onClick={()=>update_Instructor2(item._id)}>
      <button className='btn btn-active'>Admin</button>
         </td>
