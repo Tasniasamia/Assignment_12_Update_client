@@ -12,14 +12,14 @@ const Course_card = ({indexdata}) => {
     const [accept,setAccept]=useState(false);
     // const [accept2,setAccept2]=useState(false);
 
-    function handlecheck(){
+    // function handlecheck(){
        
-        setAccept(true);
+    //     setAccept(true);
       
-         {accept?"":alert('Added Successfully')}
+    //      {accept?"":alert('Added Successfully')}
         
        
-    }
+    // }
     // let seats=indexdata.Available_seats;
   const collectdata=()=>{
 //    addToDb(UserDataAsEmail.email);
@@ -167,10 +167,10 @@ Price}</div>
 
 {
  ((indexdata.Available_seats>0) && (UserDataAsEmail.role2=="Student")) ?
-<div onClick={handlecheck}>
+
             <button className='btn btn-wide'onClick={collectdata}>Enroll Now</button>
-    </div>
- :<button className="btn btn-wide"disabled>Enroll Now</button>
+  
+:<button className="btn btn-wide"disabled>Enroll Now</button>
 }
         
 
