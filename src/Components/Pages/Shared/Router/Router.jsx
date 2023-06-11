@@ -19,6 +19,7 @@ import My_Class_Instructor from "../../Dashboard/My_Class_Instructor/My_Class_In
 import Update_AddClass from "../../Dashboard/Update_AddClassData/Update_AddClass";
 import My_Class_User from "../../Dashboard/My_Class_User/My_Class_User";
 import Strippayment from "../../Dashboard/Student_Payment/Strippayment";
+import User_Enrollclass from "../../Dashboard/User_Enrollclass/User_Enrollclass";
 
 
 const router = createBrowserRouter([
@@ -79,6 +80,9 @@ const router = createBrowserRouter([
       },{
         path:"payment/:id",
         element:<Strippayment></Strippayment>
+      },{
+        path:"enroll",
+        element:<User_Enrollclass></User_Enrollclass>
       }
     ]
   },

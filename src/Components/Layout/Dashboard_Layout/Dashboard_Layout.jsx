@@ -32,6 +32,8 @@ const Dashboard_Layout = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
        
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+
+          <li><NavLink to="/">Home</NavLink></li>
           {/* <Fade> */}
             {/* Sidebar content here */}
             {
@@ -39,7 +41,7 @@ const Dashboard_Layout = () => {
   <>
             
             <li><NavLink to="/Dashboard/user_my_class">My Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/Enrolled Classes">Enrolled Classes</NavLink></li>
+            <li><NavLink to="/Dashboard/enroll">Enrolled Classes</NavLink></li>
             {/* <li><NavLink to="/Dashboard/payment">Payment</NavLink></li> */}
             </>}
 

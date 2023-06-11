@@ -1,10 +1,15 @@
-import React from 'react';
-import useCartCollection from '../../../../Hooks/useCartCollection';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Shared/AuthProvider/AuthProvider';
 
-const My_Class_User = () => {
-    const[cart,refetch]=useCartCollection();
-    console.log(cart);
+const User_Enrollclass = () => {
+    const[enrolldata,setEnrolldata]=useState([]);
+    const{data}=useContext(AuthContext)
+    axios.get(`http://localhost:6889/enrollemail?email=${data?.email}`)
+    .then(res=>{console.log(res.data);
+    setEnrolldata(res.data);
+    
+    })
     return (
         <div className='w-full '>
            
@@ -18,26 +23,25 @@ const My_Class_User = () => {
 
     <th>class</th>
     <th> image</th>
-    <th>Available_seats</th>
-    <th>price</th>
+  
+
    
-    <th>PAY</th>
-    {/* <th>Remove</th> */}
+    <th>Payment Status</th>
+  
   
   </tr>
 </thead>
 <tbody>
   {/* row 1 */}
   {
-   cart.map((item,index)=> <tr key={item._id}>
+   enrolldata.map((item,index)=> <tr key={item._id}>
 
         <td>
           {index+1}
         </td>
        
         <td>
-{item.class
-}              
+{item.class}              
         </td>
         <td>
               <div className="flex items-center space-x-3">
@@ -49,10 +53,9 @@ const My_Class_User = () => {
                 
               </div>
             </td>
-        <td>{item.Available_seats}</td>
-        <td>${item.price}</td>
-       <td><button className='btn btn-active'><Link to={`/Dashboard/payment/${item._id}`}>PAY</Link>  </button></td>
-       {/* <td><button className='btn btn-active'>Delete</button></td> */}
+          
+            <td>Paid</td>
+       
       </tr>)
   }
 
@@ -67,4 +70,4 @@ const My_Class_User = () => {
     );
 };
 
-export default My_Class_User;
+export default User_Enrollclass;

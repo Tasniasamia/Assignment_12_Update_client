@@ -8,6 +8,7 @@ import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
+    let totalenroll=0;
     const stripe = useStripe();
     const elements = useElements();
     const {data}=useContext(AuthContext);
@@ -146,73 +147,82 @@ useEffect(()=>{
       console.log(paymentIntent);
 let seats=enroll.Available_seats
 
-// if(paymentIntent.status==="succeeded"){
-//     seats--
-// //update available seats into addClass
-//   fetch(`http://localhost:6889/UpdateAddClassdataseat/${enroll.class_id}`,{
-//       method:"PATCH",
-//       headers:{
-//           "content-type":"application/json"
-//       },
-//        body:JSON.stringify({Available_seats:seats})
-//    }).then(res=>res.json()).then(data=>{console.log(data);
-//    if(data.modifiedCount>0){
-//      // refetch();
-//        alert("updated Successfully in AddClass");
-//    }
+if(paymentIntent.status==="succeeded"){
+    seats--
+    totalenroll++;
+//update available seats into addClass
+  fetch(`http://localhost:6889/UpdateAddClassdataseat/${enroll.class_id}`,{
+      method:"PATCH",
+      headers:{
+          "content-type":"application/json"
+      },
+       body:JSON.stringify({Available_seats:seats})
+   }).then(res=>res.json()).then(data=>{console.log(data);
+   if(data.modifiedCount>0){
+     // refetch();
+       alert("updated Successfully available seats in AddClass");
+   }
   
-//    })
+   })
 
 
-// //update available seats into addClass
-// //update available seats into cart
-// fetch(`http://localhost:6889/cartseatUpdate/${id}`,{
-//     method:"PATCH",
-//     headers:{
-//         "content-type":"application/json"
-//     },
-//      body:JSON.stringify({Available_seats:seats})
-//  }).then(res=>res.json()).then(data=>{console.log(data);
-//  if(data.modifiedCount>0){
-//    // refetch();
-//      alert("updated Successfully into Cart");
-//  }
+//update available seats into addClass
+//update available totalenroll number
+fetch(`http://localhost:6889/updateaddclassdataenroll/${enroll.class_id}`,{
+    method:"PUT",
+    headers:{
+        "content-type":"application/json"
+    },
+     body:JSON.stringify({Totalenroll:totalenroll})
+ }).then(res=>res.json()).then(data=>{console.log(data);
+ if(data.modifiedCount>0){
+   // refetch();
+     alert("updated totalenroll number  Successfully");
+ }
 
-//  })
-
-// //update available seats into cart
-// const paysuccessdata={
-// class:enroll.class,
-// image:enroll.image,
-// buyer_email:data?.email,
-// instructor_email:enroll.instructor_email,
-// instructor_id:enroll.instructor_id,
-// class_id:enroll.class_id
+ })
 
 
+//update available seats into cart
+const paysuccessdata={
+class:enroll.class,
+image:enroll.image,
+buyer_email:data?.email,
+instructor_email:enroll.instructor_email,
+instructor_id:enroll.instructor_id,
+class_id:enroll.class_id,
+date:new Date()
 
-// }
-// console.log(paysuccessdata);
 
-// axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
-// .then(res=>{
-//           console.log(res.data);
-//          if(res.data.insertedId) {
-//             alert("you have added Successfully");
-//          }
+}
+console.log(paysuccessdata);
+
+axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
+.then(res=>{
+          console.log(res.data);
+         if(res.data.insertedId) {
+            alert("you have added Successfully");
+         }
         
-//         })
+        })
+ 
+ //delete from cartCollection
+ fetch(`http://localhost:6889/cartdatadel/${id}`,{
+    method:"DELETE"
+}).then(res=>res.json()).then(data=>{console.log(data);if(data.deletedCount >0){
+
+    // refetch();
+    alert("yes Delete Successfull");
+}})
  
  
  
  
- 
- 
-//            const transaction_id=paymentIntent.id;
-//   setTransaction(transaction_id);
-//   console.log(transaction_id);
+           const transaction_id=paymentIntent.id;
+  setTransaction(transaction_id);
+  console.log(transaction_id);
   
-// }
+}
     };
   
     return (
