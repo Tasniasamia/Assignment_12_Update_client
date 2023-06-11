@@ -28,9 +28,11 @@ const Dashboard_Layout = () => {
         
         </div> 
         <div className="drawer-side">
+            {/* <Fade> */}
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-          <Fade>
+       
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+          {/* <Fade> */}
             {/* Sidebar content here */}
             {
    data && studentdata?.Student &&
@@ -58,10 +60,10 @@ const Dashboard_Layout = () => {
            }  
          
           
-          
+         {/* </Fade> */}
          
           </ul>
-          </Fade>
+          {/* </Fade> */}
         </div>
       </div>
     );

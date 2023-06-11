@@ -9,7 +9,7 @@ const useCartCollection = () => {
         queryKey: ['Cartdata',data?.email],
     
       queryFn:async () => {
-            const response = await axios.get(`http://localhost:6889/Cartdata` )
+            const response = await axios.get(`http://localhost:6889/Cartdata?email=${data?.email}` )
             console.log(response.data);
 
             return response.data

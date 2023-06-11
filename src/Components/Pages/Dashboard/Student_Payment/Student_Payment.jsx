@@ -43,7 +43,7 @@ useEffect(()=>{
     fetch(`http://localhost:6889/Cartdata/${id}`)
     .then(res=>res.json())
     .then(data=>{console.log(data);setEnroll(data)})
-},[])
+},[id])
  
   
 
@@ -60,7 +60,7 @@ useEffect(()=>{
   
   if(enroll?.price){
 
-console.log(enroll.price);
+// console.log(enroll.price);
 
     fetch('http://localhost:6889/create-payment-intent',{
         method:"POST",
@@ -71,7 +71,7 @@ console.log(enroll.price);
       }).then(res=>res.json())
       .then(data=>{console.log("data",data);
       setClientSecret(data.clientSecret)
-    console.log("Efewfewr");
+    // console.log("Efewfewr");
     if(data.insertedId){
       
         Swal.fire({
@@ -87,7 +87,7 @@ console.log(enroll.price);
     })
   }
   
-  },[enroll])
+  },[enroll?.price])
   console.log(clientsecret);
     const handleSubmit = async (event) => {
       // Block native form submission.
@@ -144,14 +144,75 @@ console.log(enroll.price);
       }
       setProcessing(false);
       console.log(paymentIntent);
-if(paymentIntent.status==="succeeded"){
+let seats=enroll.Available_seats
 
-
-  const transaction_id=paymentIntent.id;
-  setTransaction(transaction_id);
-  console.log(transaction_id);
+// if(paymentIntent.status==="succeeded"){
+//     seats--
+// //update available seats into addClass
+//   fetch(`http://localhost:6889/UpdateAddClassdataseat/${enroll.class_id}`,{
+//       method:"PATCH",
+//       headers:{
+//           "content-type":"application/json"
+//       },
+//        body:JSON.stringify({Available_seats:seats})
+//    }).then(res=>res.json()).then(data=>{console.log(data);
+//    if(data.modifiedCount>0){
+//      // refetch();
+//        alert("updated Successfully in AddClass");
+//    }
   
-}
+//    })
+
+
+// //update available seats into addClass
+// //update available seats into cart
+// fetch(`http://localhost:6889/cartseatUpdate/${id}`,{
+//     method:"PATCH",
+//     headers:{
+//         "content-type":"application/json"
+//     },
+//      body:JSON.stringify({Available_seats:seats})
+//  }).then(res=>res.json()).then(data=>{console.log(data);
+//  if(data.modifiedCount>0){
+//    // refetch();
+//      alert("updated Successfully into Cart");
+//  }
+
+//  })
+
+// //update available seats into cart
+// const paysuccessdata={
+// class:enroll.class,
+// image:enroll.image,
+// buyer_email:data?.email,
+// instructor_email:enroll.instructor_email,
+// instructor_id:enroll.instructor_id,
+// class_id:enroll.class_id
+
+
+
+// }
+// console.log(paysuccessdata);
+
+// axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
+// .then(res=>{
+//           console.log(res.data);
+//          if(res.data.insertedId) {
+//             alert("you have added Successfully");
+//          }
+        
+//         })
+ 
+ 
+ 
+ 
+ 
+ 
+//            const transaction_id=paymentIntent.id;
+//   setTransaction(transaction_id);
+//   console.log(transaction_id);
+  
+// }
     };
   
     return (
