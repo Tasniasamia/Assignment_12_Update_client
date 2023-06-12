@@ -39,21 +39,21 @@ const Dashboard_Layout = () => {
         
         </div> 
         <div className="drawer-side">
-        <motion.div drag="x" style={{ x, opacity }} />            {/* <Fade> */}
+  
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
         
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
 
-          <li><NavLink to="/"><i className="fa-solid fa-house"></i>Home</NavLink></li>
+          <Fade>   <li><NavLink to="/"><i className="fa-solid fa-house"></i>Home</NavLink></li></Fade>
           {/* <Fade> */}
             {/* Sidebar content here */}
             {
    data && studentdata?.Student &&
   <>
             
-            <li><NavLink to="/Dashboard/user_my_class"><i className="fa-solid fa-cart-shopping"></i>My Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/enroll"><i className="fa-solid fa-book"></i>Enrolled Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/payment_history"><i className="fa-solid fa-money-bill"></i>Payment History</NavLink></li>
+            <Fade>  <li><NavLink to="/Dashboard/user_my_class"><i className="fa-solid fa-cart-shopping"></i>My Classes</NavLink></li></Fade>
+            <Fade>  <li><NavLink to="/Dashboard/enroll"><i className="fa-solid fa-book"></i>Enrolled Classes</NavLink></li></Fade>
+            <Fade> <li><NavLink to="/Dashboard/payment_history"><i className="fa-solid fa-money-bill"></i>Payment History</NavLink></li></Fade>
             {/* <li><NavLink to="/Dashboard/payment">Payment</NavLink></li> */}
             </>}
 
@@ -62,14 +62,14 @@ const Dashboard_Layout = () => {
             
             
           
-            {data &&  dataInstructor?.Instructor  &&    <>    <li><NavLink to="/Dashboard/addclass"><i className="fa-solid fa-user-plus"></i>Add Class</NavLink></li>
-            <li><NavLink to="/Dashboard/instructor_my_class"><i className="fa-solid fa-chart-column"></i>My Class</NavLink></li></>}
+            {data &&  dataInstructor?.Instructor  &&    <>    <Fade> <li><NavLink to="/Dashboard/addclass"><i className="fa-solid fa-user-plus"></i>Add Class</NavLink></li></Fade>
+            <Fade> <li><NavLink to="/Dashboard/instructor_my_class"><i className="fa-solid fa-chart-column"></i>My Class</NavLink></li></Fade></>}
             {/* <li><NavLink to="/Dashboard/top-enrolled">Top Enrolled Student</NavLink></li>
             <li><NavLink to="/Dashboard/feedback" >Feedback</NavLink></li></>  */}
             
       {
-      data &&   admindata?.Admin &&   <>    <li><NavLink to="/Dashboard/manage_class"><i className="fa-solid fa-list-check"></i> Manage Classes</NavLink></li>
-            <li><NavLink to="/Dashboard/manage_user"> <i className="fa-solid fa-people-roof"></i>Manage Users</NavLink></li>
+      data &&   admindata?.Admin &&   <>  <Fade>  <li><NavLink to="/Dashboard/manage_class"><i className="fa-solid fa-list-check"></i> Manage Classes</NavLink></li></Fade> 
+            <Fade>  <li><NavLink to="/Dashboard/manage_user"> <i className="fa-solid fa-people-roof"></i>Manage Users</NavLink></li></Fade> 
             </>
            }  
          
@@ -78,6 +78,7 @@ const Dashboard_Layout = () => {
          
           </ul>
           {/* </Fade> */}
+        
         </div>
       </div>  </>
     );
