@@ -3,3 +3,7 @@ ul.navitems a {
     font-size:20px;
     color:white;
 }
+ul.navitems a.active{
+
+color:skyblue;
+}

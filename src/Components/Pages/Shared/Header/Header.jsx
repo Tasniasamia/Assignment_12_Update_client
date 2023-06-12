@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 const Header = () => {
   const{data,signout}=useContext(AuthContext);
     const navitem=(
         <>
-   <Link to="/">Home</Link>
+  <NavLink to="/">Home</NavLink>
        
-   <Link to="/Instructor">Instructor</Link>
-   <Link to="/Course_class">Classes</Link>
-   <Link to="/Dashboard">Dashboard</Link>
+ <NavLink to="/Instructor">Instructor</NavLink>
+ <NavLink to="/Course_class">Classes</NavLink>
+ <NavLink to="/Dashboard">Dashboard</NavLink>
 
 {/* <Link to="/login">Login</Link> */}
         </>

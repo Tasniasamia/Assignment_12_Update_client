@@ -46,7 +46,7 @@ const update_denied=(id)=>{
         <title>Whistle | Manage Class</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-        <div className=" w-full overflow-y-scroll  h-[600px]">
+        <div className=" w-full overflow-y-scroll overflow-y-scroll   h-[600px]">
 <table className="table w-full  ">
 {/* head */}
 <thead className='relative' >
@@ -55,6 +55,9 @@ const update_denied=(id)=>{
     <th>#</th>
 
     <th>CLass Name</th>
+    <th>Class Image</th>
+    <th>Price</th>
+    <th>Available Seats</th>
     <th> Class Instructor</th>
     <th>Instructor Email</th>
     <th>Status</th>
@@ -72,21 +75,24 @@ const update_denied=(id)=>{
         <td>
           {index+1}
         </td>
-        {/* <td>
-          <div className="flex items-center space-x-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src={item.
-photo} alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            
-          </div>
-        </td> */}
+       
         <td>
 {item.Class_name
 }              
         </td>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={item.Class_image} alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            
+          </div>
+        </td>
+      
+        <td>${item.Price}</td>
+        <td>{item.Available_seats}</td>
         <td>{item.Instructor_Name}</td>
         <td>{item.Instructor_Email}</td>
         <td>{item.status}</td>
