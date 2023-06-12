@@ -47,7 +47,7 @@ const Course_card = ({indexdata}) => {
       instructor_name:UserDataAsEmail.name,
       class_id:res.data._id,
       instructor_id:UserDataAsEmail._id,
-      totalenroll:parseInt(0),
+      totalenroll:res.data.totalenroll
     
     }
   

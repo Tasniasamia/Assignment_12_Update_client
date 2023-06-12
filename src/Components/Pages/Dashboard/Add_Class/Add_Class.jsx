@@ -8,6 +8,7 @@ const Add_Class = () => {
     console.log("Tasnia")
     const SubmitData=(event)=>{
         event.preventDefault();
+    let number=0;    
 const Class_name=event.target.class_name.value;
 const Class_image=event.target.Class_image.value;
 const Instructor_Name=event.target.Instructor_Name.value;
@@ -22,6 +23,8 @@ const data={
     Available_seats:Available_seats,
     Price:Price,
     status:"Pending",
+    
+totalenroll:parseInt(number)
     
   
 }

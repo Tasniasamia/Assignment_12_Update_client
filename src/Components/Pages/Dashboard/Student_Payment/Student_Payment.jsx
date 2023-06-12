@@ -145,19 +145,21 @@ useEffect(()=>{
       }
       setProcessing(false);
       console.log(paymentIntent);
-let seats=enroll.Available_seats
-
+let seats=enroll.Available_seats;
+let count=parseInt(enroll?.totalenroll);
+console.log(count);
 if(paymentIntent.status==="succeeded"){
-    // let totalenroll=0;
-    seats--
+    count++
+    seats--;
   
+
 //update available seats into addClass
   fetch(`https://assignment-12-server-tasniasamia.vercel.app/UpdateAddClassdataseat/${enroll.class_id}`,{
       method:"PATCH",
       headers:{
           "content-type":"application/json"
       },
-       body:JSON.stringify({Available_seats:seats})
+       body:JSON.stringify({Available_seats:seats,totalenroll:count})
    }).then(res=>res.json()).then(data=>{console.log(data);
    if(data.modifiedCount>0){
      // refetch();
@@ -169,27 +171,22 @@ if(paymentIntent.status==="succeeded"){
 
 //update available seats into addClass
 //update available totalenroll number
-let totalenroll;
-if(!totalenroll){
-    totalenroll=0;
-}
-else{
-    totalenroll=totalenroll+1
 
-fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateaddclassdataenroll/${enroll.class_id}`,{
-    method:"PUT",
-    headers:{
-        "content-type":"application/json"
-    },
-     body:JSON.stringify({totalenroll:totalenroll})
- }).then(res=>res.json()).then(data=>{console.log(data);
- if(data.modifiedCount>0){
-   // refetch();
-     alert("updated totalenroll number  Successfully");
- }
 
- })
-}
+// fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateaddclassdataenroll/${enroll.class_id}`,{
+//     method:"PUT",
+//     headers:{
+//         "content-type":"application/json"
+//     },
+//      body:JSON.stringify({totalenroll:totalenroll})
+//  }).then(res=>res.json()).then(data=>{console.log(data);
+//  if(data.modifiedCount>0){
+//    // refetch();
+//      alert("updated totalenroll number  Successfully");
+//  }
+
+//  })
+
 
 //update available seats into cart
 const paysuccessdata={
