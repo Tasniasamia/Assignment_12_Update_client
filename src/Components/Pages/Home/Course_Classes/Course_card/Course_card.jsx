@@ -144,10 +144,11 @@ const Course_card = ({indexdata}) => {
 
 
   }
-  let roledata=UserDataAsEmail.role2==("Admin"||"Instructor");
+  let roledata=UserDataAsEmail.role2=="Admin";
+  let roledata2=UserDataAsEmail.role2=="Instructor";
   let available_seats=indexdata.Available_seats===0;
     return (
-        <div className={(roledata || available_seats)?"card w-96 bg-red-300 shadow-xl":"card w-96 bg-base-100 shadow-xl"}>
+        <div className={(roledata|| roledata2 || available_seats)?"card w-96 bg-red-300 shadow-xl":"card w-96 bg-base-100 shadow-xl"}>
         <figure><img src={indexdata.
 Class_image} alt="Shoes"style={{height:"250px",width:"100%"}} className='object-cover'/></figure>
         <div className="card-body">

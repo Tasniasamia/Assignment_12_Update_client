@@ -92,7 +92,7 @@ photo} alt="Avatar Tailwind CSS Component" />
         <td>{item.status}</td>
         <td onClick={()=>update_approved(item._id)}><button className='btn btn-active'>Approve</button></td>
         <td onClick={()=>update_denied(item._id)}><button className='btn btn-active'>Deny</button></td>
-       <td><textarea disabled={item.status==="Approved"} onChange={(e) => setInputValue(e.target.value)} cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
+       <td><textarea  onChange={(e) => setInputValue(e.target.value)} cols="6"rows="1"style={{border:"1px solid black",textAlign:'center',padding:"5px"}}></textarea></td>
       </tr>)
   }
 

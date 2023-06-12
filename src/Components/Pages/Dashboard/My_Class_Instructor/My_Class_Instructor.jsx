@@ -47,7 +47,7 @@ const My_Class_Instructor = () => {
         <td>{item.Instructor_Name}</td>
         <td>{item.Instructor_Email}</td>
         <td>{item.status}</td>
-       <td>{item.feedback}</td>
+       <td>{item.status=="Deny"?item.feedback:" "}</td>
        <td><button className='btn btn-active'><Link to={`/Dashboard/updateClass/${item._id}`}>Update</Link>  </button></td>
        <td className='text-center'>{item.totalenroll?item.totalenroll:0}</td>
       </tr>)
