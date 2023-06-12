@@ -10,6 +10,9 @@ const Footer = () => {
                     <div>
                 <Link to="/" className="btn btn-ghost normal-case text-3xl "><span style={{color:"white"}}>WH<span style={{color:"skyblue"}}>i</span>STLE</span></Link></div>
                 <div className=' text-white'>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, making it look like readable English.</div>
+               <div className='text-white'>Address: Banani,Dhaka </div>
+               
+               
                 <div className='grid grid-cols-4 gap-2'>
                <div style={{background:"#3c3c3c"}}className='text-center p-3 hover:bg-red-300'><i className="fa-brands fa-facebook-f text-white"></i></div> 
                <div style={{background:"#3c3c3c"}}className='text-center p-3'><i className="fa-brands fa-google-plus-g text-white"></i></div> 
