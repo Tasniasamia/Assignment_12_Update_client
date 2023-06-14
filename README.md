@@ -10,6 +10,11 @@
    * tanstack query
    * axios
    * react relevants icon
+
+* admin email:tss@gmail.com
+* admin password: TasHan181793$
+* instructor email: johndoe@example.com
+* instructor password: TasHan181793$
 * live site link:
    
    https://assignment12-e6a98.web.app/
