@@ -7,7 +7,7 @@ const UseUsers = () => {
         queryKey: ['signup_users'],
     
       queryFn:async () => {
-            const response = await axios.get(`https://assignment-12-server-tasniasamia.vercel.app/signup_users` )
+            const response = await axios.get(`http://localhost:6889/signup_users` )
             console.log(response.data);
 
             return response.data

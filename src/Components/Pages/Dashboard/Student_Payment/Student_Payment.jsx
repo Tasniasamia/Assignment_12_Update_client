@@ -41,7 +41,7 @@ const[transactiion,setTransaction]=useState("");
   //price getting for payment
 useEffect(()=>{
 
-    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Cartdata/${id}`)
+    fetch(`http://localhost:6889/Cartdata/${id}`)
     .then(res=>res.json())
     .then(data=>{console.log(data);setEnroll(data)})
 },[id])
@@ -63,7 +63,7 @@ useEffect(()=>{
 
 // console.log(enroll.price);
 
-    fetch('https://assignment-12-server-tasniasamia.vercel.app/create-payment-intent',{
+    fetch('http://localhost:6889/create-payment-intent',{
         method:"POST",
         headers:{
           "content-type":"application/json"
@@ -154,7 +154,7 @@ if(paymentIntent.status==="succeeded"){
   
 
 //update available seats into addClass
-  fetch(`https://assignment-12-server-tasniasamia.vercel.app/UpdateAddClassdataseat/${enroll.class_id}`,{
+  fetch(`http://localhost:6889/UpdateAddClassdataseat/${enroll.class_id}`,{
       method:"PATCH",
       headers:{
           "content-type":"application/json"
@@ -204,7 +204,7 @@ price:enroll?.price
 }
 console.log(paysuccessdata);
 
-axios.post('https://assignment-12-server-tasniasamia.vercel.app/enrollClass',{...paysuccessdata})
+axios.post('http://localhost:6889/enrollClass',{...paysuccessdata})
 .then(res=>{
           console.log(res.data);
          if(res.data.insertedId) {
@@ -214,7 +214,7 @@ axios.post('https://assignment-12-server-tasniasamia.vercel.app/enrollClass',{..
         })
  
  //delete from cartCollection
- fetch(`https://assignment-12-server-tasniasamia.vercel.app/cartdatadel/${id}`,{
+ fetch(`http://localhost:6889/cartdatadel/${id}`,{
     method:"DELETE"
 }).then(res=>res.json()).then(data=>{console.log(data);if(data.deletedCount >0){
 

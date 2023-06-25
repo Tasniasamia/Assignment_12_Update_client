@@ -9,7 +9,7 @@ const useManageClassDataAll = () => {
         queryKey: ['getAddClassDataAll',data?.email],
     
       queryFn:async () => {
-            const response = await axios.get(`https://assignment-12-server-tasniasamia.vercel.app/getAddClassDataAll` )
+            const response = await axios.get(`http://localhost:6889/getAddClassDataAll` )
             console.log(response.data);
 
             return response.data

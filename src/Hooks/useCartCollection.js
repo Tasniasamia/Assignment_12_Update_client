@@ -9,7 +9,7 @@ const useCartCollection = () => {
         queryKey: ['Cartdata',data?.email],
     
       queryFn:async () => {
-            const response = await axios.get(`https://assignment-12-server-tasniasamia.vercel.app/Cartdata?email=${data?.email}` )
+            const response = await axios.get(`http://localhost:6889/Cartdata?email=${data?.email}` )
             console.log(response.data);
 
             return response.data

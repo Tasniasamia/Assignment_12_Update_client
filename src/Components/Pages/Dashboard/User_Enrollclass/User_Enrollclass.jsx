@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 const User_Enrollclass = () => {
     const[enrolldata,setEnrolldata]=useState([]);
     const{data}=useContext(AuthContext)
-    axios.get(`https://assignment-12-server-tasniasamia.vercel.app/enrollemail?email=${data?.email}`)
+    axios.get(`http://localhost:6889/enrollemail?email=${data?.email}`)
     .then(res=>{console.log(res.data);
     setEnrolldata(res.data);
     

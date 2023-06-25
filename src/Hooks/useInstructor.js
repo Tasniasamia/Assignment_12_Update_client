@@ -11,7 +11,7 @@ const useInstructor = () => {
         queryKey: ['Instructor',data?.email],
     
       queryFn:async () => {
-            const response = await axios.get(`https://assignment-12-server-tasniasamia.vercel.app/instructors` )
+            const response = await axios.get(`http://localhost:6889/instructors2` )
             console.log(response.data);
 
             return response.data

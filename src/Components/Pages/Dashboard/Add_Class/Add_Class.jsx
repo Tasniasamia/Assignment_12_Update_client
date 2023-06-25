@@ -32,7 +32,7 @@ totalenroll:parseInt(number)
 
 console.log(data);
 
-axios.post('https://assignment-12-server-tasniasamia.vercel.app/AddClass', {...data})
+axios.post('http://localhost:6889/AddClass', {...data})
 .then(res =>{
      console.log(res);
 if(res.data.insertedId){

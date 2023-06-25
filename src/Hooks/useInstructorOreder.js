@@ -31,7 +31,7 @@ const[Instructor,setInstructor]=useState(null);
     useEffect(()=>{
 
     if(data?.email){
-    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Instructorwise/${data?.email}`)
+    fetch(`http://localhost:6889/Instructorwise/${data?.email}`)
        .then(res=>res.json())
       .then(data=>{console.log(data);setInstructor(data)})
       }

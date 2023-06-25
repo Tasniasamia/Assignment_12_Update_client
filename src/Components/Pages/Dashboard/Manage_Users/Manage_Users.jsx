@@ -8,7 +8,7 @@ const Manage_Users = () => {
     //update data
     const update_Instructor=(id)=>{
 
-    fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateinstructor/${id}`,{
+    fetch(`http://localhost:6889/updateinstructor/${id}`,{
         method:"PATCH"
     }).then(res=>res.json()).then(data=>{console.log(data);
     if(data.modifiedCount>0){
@@ -23,7 +23,7 @@ const Manage_Users = () => {
     }
     const update_Instructor2=(id)=>{
 
-        fetch(`https://assignment-12-server-tasniasamia.vercel.app/updateinstructor2/${id}`,{
+        fetch(`http://localhost:6889/updateinstructor2/${id}`,{
             method:"PATCH"
         }).then(res=>res.json()).then(data=>{console.log(data);
         if(data.modifiedCount>0){

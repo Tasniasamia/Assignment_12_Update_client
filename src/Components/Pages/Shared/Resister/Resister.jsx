@@ -37,7 +37,7 @@ const{signup,data,displayname}=useContext(AuthContext)
             .then(() => {
               // Profile updated!
             //   const userdata={name:data.name,email:data.email}
-              fetch('https://assignment-12-server-tasniasamia.vercel.app/users',{
+              fetch('http://localhost:6889/users',{
                 method:"POST",
                 headers:{
                   "content-type":"application/json"

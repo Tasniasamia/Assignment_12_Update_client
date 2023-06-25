@@ -7,7 +7,7 @@ const My_Class_User = () => {
     const[cart,refetch]=useCartCollection();
     console.log(cart);
     const deletdata=(id)=>{
-        fetch(`https://assignment-12-server-tasniasamia.vercel.app/cartdatadel/${id}`,{
+        fetch(`http://localhost:6889/cartdatadel/${id}`,{
             method:"DELETE"
         })
         .then(res=>res.json())

@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 const Payment_history = () => {
     const[enrolldata,setEnrolldata]=useState([]);
     const{data}=useContext(AuthContext)
-    axios.get(`https://assignment-12-server-tasniasamia.vercel.app/enrollemail2?email=${data?.email}`)
+    axios.get(`http://localhost:6889/enrollemail2?email=${data?.email}`)
     .then(res=>{console.log(res.data);
     setEnrolldata(res.data);
     

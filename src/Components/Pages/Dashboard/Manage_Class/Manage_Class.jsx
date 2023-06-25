@@ -10,7 +10,7 @@ const Manage_Class = () => {
     console.log(AddClassUsersAll);
     //update Approve
     const update_approved=(id)=>{
-        fetch(`https://assignment-12-server-tasniasamia.vercel.app/Status_Approve/${id}`,{
+        fetch(`http://localhost:6889/Status_Approve/${id}`,{
             method:"PATCH"
         }).then(res=>res.json()).then(data=>{console.log(data);
         if(data.modifiedCount>0){
@@ -25,7 +25,7 @@ const Manage_Class = () => {
 
 let textarea =inputValue;
 const update_denied=(id)=>{
-    fetch(`https://assignment-12-server-tasniasamia.vercel.app/Status_Denied/${id}`,{
+    fetch(`http://localhost:6889/Status_Denied/${id}`,{
         method:"PUT",
         headers:{
             "content-type":"application/json"
